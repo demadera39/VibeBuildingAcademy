@@ -205,6 +205,35 @@ footer{padding:40px 24px;background:var(--bg)}
 .footer-link:hover{color:var(--purple)}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .55s ease,transform .55s ease}
 .reveal.visible{opacity:1;transform:none}
+/* ── Founder section ── */
+.founder{padding:90px 24px;background:white}
+.founder-inner{max-width:900px;margin:0 auto}
+.founder-card{display:grid;grid-template-columns:200px 1fr;gap:56px;align-items:start;background:var(--purple-lt);border-radius:var(--r-xl);box-shadow:0 12px 0 var(--purple-mid),0 28px 70px rgba(124,58,237,.18);padding:56px}
+.founder-photo{width:200px;height:220px;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 10px 0 var(--purple-mid);background:linear-gradient(135deg,#9B60FF,#5221B5);display:flex;align-items:center;justify-content:center;font-size:72px;flex-shrink:0}
+.founder-photo img{width:100%;height:100%;object-fit:cover;object-position:top}
+.founder-eyebrow{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--purple);margin-bottom:12px}
+.founder-name{font-size:32px;font-weight:900;color:var(--text);line-height:1.1;margin-bottom:6px}
+.founder-role{font-size:15px;font-weight:700;color:var(--text-mid);margin-bottom:22px}
+.founder-bio{font-size:16px;font-weight:600;color:var(--text-mid);line-height:1.8;margin-bottom:10px}
+.founder-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.founder-badge{padding:8px 18px;border-radius:100px;font-size:13px;font-weight:800;background:white;color:var(--purple);box-shadow:0 4px 0 var(--purple-mid)}
+/* ── Builder mentality section ── */
+.mentality{padding:90px 24px;background:var(--bg)}
+.mentality-inner{max-width:900px;margin:0 auto}
+.mentality-header{text-align:center;margin-bottom:52px}
+.mentality-header h2{font-size:clamp(28px,4vw,46px);font-weight:900;line-height:1.1;margin:14px 0}
+.mentality-header p{font-size:17px;font-weight:600;color:var(--text-mid);max-width:560px;margin:0 auto;line-height:1.7}
+.mentality-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.mentality-card{border-radius:var(--r);padding:28px 22px;background:white;transition:transform .2s}
+.mentality-card:hover{transform:translateY(-6px) rotate(-.5deg)}
+.mentality-card:nth-child(1){box-shadow:0 8px 0 var(--green-mid)}
+.mentality-card:nth-child(2){box-shadow:0 8px 0 var(--purple-mid)}
+.mentality-card:nth-child(3){box-shadow:0 8px 0 var(--amber-mid)}
+.mentality-card:nth-child(4){box-shadow:0 8px 0 var(--pink-mid)}
+.mentality-icon{font-size:36px;margin-bottom:14px;display:block}
+.mentality-card h3{font-size:17px;font-weight:900;color:var(--text);margin-bottom:8px}
+.mentality-card p{font-size:13px;font-weight:600;color:var(--text-mid);line-height:1.65}
+@media(max-width:720px){.mentality-grid{grid-template-columns:repeat(2,1fr)}.founder-card{grid-template-columns:1fr;gap:32px}.founder-photo{width:140px;height:154px;font-size:52px}}
 /* ── Kit embed overrides ── */
 .formkit-form{background:transparent!important;padding:0!important;border:none!important;box-shadow:none!important;max-width:100%!important}
 .formkit-form *{font-family:'Nunito',sans-serif!important}
@@ -269,7 +298,7 @@ footer{padding:40px 24px;background:var(--bg)}
   <div class="hero-inner">
     <div class="hero-live"><span class="live-dot"></span>Coming very soon — cohort 1 forming now</div>
     <h1>Build Your <span class="hl-purple">Future Career.</span><br>With <span class="hl-green">AI.</span></h1>
-    <p class="hero-sub">The first live programme for professionals who want to turn ideas into real products, tools and businesses — using AI as their builder.</p>
+    <p class="hero-sub">The workforce is shifting faster than any generation has ever seen. AI is eliminating roles, creating new ones — and rewarding one type of professional above all others: the builder. This programme teaches you to adapt, build and thrive before the window closes.</p>
     <div class="countdown-wrap">
       <div class="countdown-label">Launching in</div>
       <div class="countdown">
@@ -305,9 +334,9 @@ footer{padding:40px 24px;background:var(--bg)}
 <section class="explainer">
   <div class="explainer-inner">
     <div class="explainer-header reveal">
-      <span class="tag tag-purple">💡 A new era</span>
-      <h2>What is vibe building?</h2>
-      <p>The fastest-growing skill in the world — and you don't need to be a developer to do it.</p>
+      <span class="tag tag-purple">🔄 The shift is here</span>
+      <h2>Upskill, reskill,<br>or get left behind.</h2>
+      <p>AI isn't the future of work — it's the present. The professionals who know how to build with it will lead. Everyone else will be managed by someone who does.</p>
     </div>
     <div class="explainer-quote reveal">
       <div class="quote-mark">"</div>
@@ -315,9 +344,9 @@ footer{padding:40px 24px;background:var(--bg)}
       <div class="quote-attr">— Andrej Karpathy, co-founder of OpenAI · February 2025</div>
     </div>
     <div class="explainer-steps">
-      <div class="step-card reveal"><span class="step-icon">💬</span><h3>Describe what you want</h3><p>You write in plain language. No syntax, no frameworks. Just describe the outcome you want.</p></div>
-      <div class="step-card reveal"><span class="step-icon">🤖</span><h3>AI builds it for you</h3><p>Tools like Lovable, Bolt and Claude turn your words into working code, interfaces and automations — instantly.</p></div>
-      <div class="step-card reveal"><span class="step-icon">🚀</span><h3>Ship it in days</h3><p>What used to take months now takes days. This is the new speed of building — and you can do it too.</p></div>
+      <div class="step-card reveal"><span class="step-icon">⚡</span><h3>Adapt faster than change</h3><p>The half-life of skills is shrinking fast. Agility — the ability to pick up new tools, new workflows and new ways of creating — is now the most valuable professional skill there is.</p></div>
+      <div class="step-card reveal"><span class="step-icon">🧠</span><h3>Train your brain to build</h3><p>Neuroplasticity isn't just neuroscience — it's a competitive edge. This programme is built around the cognitive habits that make professionals adapt faster and learn deeper, for life.</p></div>
+      <div class="step-card reveal"><span class="step-icon">🔨</span><h3>Become a builder</h3><p>Builders don't wait for tools to be built for them — they create the products, automations and systems that everyone else depends on. That's the advantage. That's what we teach.</p></div>
     </div>
   </div>
 </section>
@@ -330,14 +359,30 @@ footer{padding:40px 24px;background:var(--bg)}
       <p>The data is clear. The window to get ahead is open — but not forever.</p>
     </div>
     <div class="stats-grid">
-      <div class="stat-card reveal"><div class="stat-num">85M</div><p>Jobs will be disrupted by AI — while 170M new roles emerge</p><div class="stat-source">World Economic Forum</div></div>
-      <div class="stat-card reveal"><div class="stat-num">30%</div><p>of tasks could be automated within the decade</p><div class="stat-source">McKinsey Global Institute</div></div>
-      <div class="stat-card reveal"><div class="stat-num">85%</div><p>of orgs are actively increasing upskilling investment</p><div class="stat-source">Josh Bersin Research</div></div>
-      <div class="stat-card reveal"><div class="stat-num">15%</div><p>productivity boost for knowledge workers who master AI</p><div class="stat-source">Goldman Sachs</div></div>
+      <div class="stat-card reveal"><div class="stat-num">85M</div><p>Jobs will be disrupted by AI — while 170M new roles emerge requiring new skills</p><div class="stat-source">World Economic Forum, 2025</div></div>
+      <div class="stat-card reveal"><div class="stat-num">44%</div><p>of workers' core skills will be disrupted or made obsolete by 2027</p><div class="stat-source">WEF Future of Jobs Report</div></div>
+      <div class="stat-card reveal"><div class="stat-num">40%</div><p>of the global workforce will need reskilling within 3 years due to AI</p><div class="stat-source">IBM Institute for Business Value</div></div>
+      <div class="stat-card reveal"><div class="stat-num">×3</div><p>Builders and AI-native professionals earn up to 3× more than non-technical peers</p><div class="stat-source">LinkedIn Workforce Report</div></div>
     </div>
     <div class="shift-callout reveal">
-      <h3>The builders who start now will have an enormous head start.</h3>
-      <p>Vibe building isn't just a trend — it's a fundamental shift in who gets to create products and businesses. Vibe Building Academy exists to make sure more people are on the right side of that shift.</p>
+      <h3>The question isn't whether your role will change. It's whether you'll be building what comes next — or scrambling to keep up with it.</h3>
+      <p>Vibe Building Academy exists for one reason: to make sure more professionals are standing on the right side of the biggest workforce transformation in history. Builders win. We teach you to become one.</p>
+    </div>
+  </div>
+</section>
+
+<section class="mentality">
+  <div class="mentality-inner">
+    <div class="mentality-header reveal">
+      <span class="tag tag-green">🧠 The builder edge</span>
+      <h2>Four traits every<br>future-proof professional builds.</h2>
+      <p>This programme doesn't just teach tools. It trains the underlying mindset that lets you keep adapting — no matter what comes next.</p>
+    </div>
+    <div class="mentality-grid">
+      <div class="mentality-card reveal"><span class="mentality-icon">⚡</span><h3>Agility</h3><p>Move faster than change. Learn to pick up new tools in hours, not months, and keep building no matter what the landscape looks like next quarter.</p></div>
+      <div class="mentality-card reveal"><span class="mentality-icon">🧠</span><h3>Neuroplasticity</h3><p>Your brain is trainable. The VBA programme is built around cognitive flexibility — the mental muscle that separates people who thrive in disruption from those paralysed by it.</p></div>
+      <div class="mentality-card reveal"><span class="mentality-icon">🔨</span><h3>Builder thinking</h3><p>Stop consuming and start creating. You won't just learn about AI — you'll build with it from session one. Shipping is the curriculum.</p></div>
+      <div class="mentality-card reveal"><span class="mentality-icon">🎯</span><h3>Rapid adaptation</h3><p>The half-life of skills is shrinking. We train you to spot what's changing, absorb what matters, and build for tomorrow — not yesterday.</p></div>
     </div>
   </div>
 </section>
@@ -391,6 +436,30 @@ footer{padding:40px 24px;background:var(--bg)}
   </div>
 </section>
 
+<section class="founder">
+  <div class="founder-inner">
+    <div class="founder-card reveal">
+      <div class="founder-photo">
+        <img src="marco.jpg" alt="Marco van Hout — founder of Vibe Building Academy" onerror="this.style.display='none';this.parentNode.innerHTML='👤'">
+      </div>
+      <div class="founder-content">
+        <div class="founder-eyebrow">Meet the founder</div>
+        <div class="founder-name">Marco van Hout</div>
+        <div class="founder-role">Vibe Builder · Educator · Digital Innovation Pioneer</div>
+        <p class="founder-bio">Marco has spent over two decades at the intersection of technology, learning and human potential. As co-founder of <strong>Digital Society School</strong> — one of Europe's leading applied university programmes for digital innovation — he helped thousands of students turn emerging technology into real social impact.</p>
+        <p class="founder-bio" style="margin-top:14px">As co-founder of <strong>Global Goals Jam</strong>, he led a worldwide innovation sprint uniting tens of thousands of changemakers across 100+ countries to tackle humanity's biggest challenges. He knows what happens when you give people the tools, the mindset and the confidence to build — it changes everything.</p>
+        <p class="founder-bio" style="margin-top:14px">Marco built Vibe Building Academy because he saw this workforce shift coming long before most. He watched the most agile, curious, builder-minded professionals rise in every disruption — and he wanted to build the programme that creates more of them. <strong>This is that programme.</strong></p>
+        <div class="founder-badges">
+          <span class="founder-badge">🏫 Digital Society School</span>
+          <span class="founder-badge">🌍 Global Goals Jam</span>
+          <span class="founder-badge">⚡ Vibe Builder</span>
+          <span class="founder-badge">📚 20+ years in digital education</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="perks">
   <div class="perks-inner">
     <div class="perks-header reveal">
@@ -410,8 +479,8 @@ footer{padding:40px 24px;background:var(--bg)}
   <div class="final-cta-card reveal">
     <div class="fcta-blob1"></div>
     <div class="fcta-blob2"></div>
-    <h2>Ready to start building?</h2>
-    <p>Drop your email and we'll let you know the moment doors open — along with your founding member access.</p>
+    <h2>Your future career starts here.</h2>
+    <p>The shift is already happening. Get on the list, get early access and be part of the first cohort of people who chose to build their future — not react to it.</p>
     <form id="fcta-form" class="fcta-form" action="https://app.kit.com/forms/75a1ed23c9/subscriptions" method="post" target="kit-iframe" onsubmit="kitMark('fcta-form','fcta-success')">
       <input type="email" name="email_address" placeholder="your@email.com" class="fcta-input" required autocomplete="email">
       <button type="submit" class="fcta-btn">Notify me →</button>
@@ -450,7 +519,7 @@ function updateCountdown(){
 updateCountdown();setInterval(updateCountdown,1000);
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-document.querySelectorAll('.explainer-steps,.stats-grid,.teaser-grid,.who-grid,.perks-grid').forEach(g=>{g.querySelectorAll(':scope > *').forEach((el,i)=>{el.style.transitionDelay=(i*90)+'ms'})});
+document.querySelectorAll('.explainer-steps,.stats-grid,.teaser-grid,.who-grid,.perks-grid,.mentality-grid,.founder-badges').forEach(g=>{g.querySelectorAll(':scope > *').forEach((el,i)=>{el.style.transitionDelay=(i*90)+'ms'})});
 var _kitPending=null;
 function kitMark(formId,successId){_kitPending={f:formId,s:successId};}
 document.addEventListener('DOMContentLoaded',function(){
