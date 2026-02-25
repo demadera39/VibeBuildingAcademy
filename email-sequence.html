@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VBA Email Sequence — Full Copy</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Nunito',sans-serif;background:#F0EAFF;color:#1E1B2E;padding:40px 24px}
+.page-title{text-align:center;margin-bottom:56px}
+.page-title h1{font-size:36px;font-weight:900;color:#1E1B2E;margin-bottom:8px}
+.page-title p{font-size:17px;font-weight:600;color:#6B7280}
+.email-card{background:white;border-radius:24px;padding:44px 48px;margin-bottom:36px;position:relative;overflow:hidden}
+.email-card:nth-child(1){box-shadow:0 10px 0 #C4B5FD}
+.email-card:nth-child(2){box-shadow:0 10px 0 #6EE7B7}
+.email-card:nth-child(3){box-shadow:0 10px 0 #FCD34D}
+.email-card:nth-child(4){box-shadow:0 10px 0 #FBCFE8}
+.email-card:nth-child(5){box-shadow:0 10px 0 #C4B5FD}
+.email-num{position:absolute;top:20px;right:24px;font-size:72px;font-weight:900;opacity:.06;line-height:1}
+.email-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:100px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:16px}
+.tag-purple{background:#EDE9FE;color:#7C3AED}
+.tag-green{background:#D1FAE5;color:#059669}
+.tag-amber{background:#FEF3C7;color:#D97706}
+.tag-pink{background:#FCE7F3;color:#DB2777}
+.email-title{font-size:26px;font-weight:900;margin-bottom:6px}
+.email-timing{font-size:13px;font-weight:700;color:#7C3AED;margin-bottom:28px;display:flex;align-items:center;gap:6px}
+.email-timing::before{content:'⏱';font-size:14px}
+.section-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#9CA3AF;margin-bottom:8px;margin-top:24px}
+.subject-opts{display:flex;flex-direction:column;gap:8px;margin-bottom:4px}
+.subject-opt{background:#F9FAFB;border-radius:12px;padding:12px 16px;font-size:15px;font-weight:700;border-left:4px solid #7C3AED;font-style:italic}
+.subject-opt.recommended{border-left-color:#10B981;background:#F0FDF4}
+.recommended-badge{font-size:10px;font-weight:800;background:#D1FAE5;color:#059669;padding:2px 8px;border-radius:100px;margin-left:8px;text-transform:uppercase;vertical-align:middle;font-style:normal}
+.preview-text{background:#F9FAFB;border-radius:12px;padding:12px 16px;font-size:14px;font-weight:600;color:#6B7280;border-left:4px solid #E5E7EB}
+.email-body{background:#FAFAFA;border-radius:16px;padding:28px 32px;margin:8px 0;line-height:1.75;font-size:15px;font-weight:600;color:#374151;border:2px solid #F3F4F6}
+.email-body p{margin-bottom:14px}
+.email-body p:last-child{margin-bottom:0}
+.email-body .token{background:#EDE9FE;color:#7C3AED;padding:1px 6px;border-radius:4px;font-size:13px;font-weight:800}
+.email-body .cta-block{background:linear-gradient(160deg,#9B60FF,#7C3AED);color:white;text-align:center;padding:16px 24px;border-radius:14px;font-size:16px;font-weight:900;margin:20px 0;box-shadow:0 6px 0 #5221B5;display:block;text-decoration:none;cursor:default}
+.email-body .cta-green{background:linear-gradient(160deg,#4ADE80,#10B981);box-shadow:0 6px 0 #047857}
+.email-body .signature{margin-top:20px;padding-top:16px;border-top:2px solid #F3F4F6}
+.email-body strong{color:#1E1B2E}
+.kit-box{background:#EDE9FE;border-radius:16px;padding:20px 24px;margin-top:16px;border-left:4px solid #7C3AED}
+.kit-box h4{font-size:13px;font-weight:800;color:#7C3AED;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+.kit-box p,.kit-box li{font-size:14px;font-weight:600;color:#4B5563;line-height:1.6}
+.kit-box ol,.kit-box ul{padding-left:20px;margin-top:6px}
+.kit-box li{margin-bottom:4px}
+.divider{border:none;border-top:3px dashed #E5E7EB;margin:52px 0}
+.flow-box{background:#1E1B2E;color:#E2E8F0;border-radius:20px;padding:36px 40px;margin:36px 0;font-family:monospace;font-size:13px;line-height:1.9}
+.flow-box h3{font-family:'Nunito',sans-serif;font-size:20px;font-weight:900;color:white;margin-bottom:20px}
+.flow-purple{color:#C4B5FD}
+.flow-green{color:#6EE7B7}
+.flow-gray{color:#9CA3AF}
+.abtests{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:8px}
+.abtest-card{background:#F9FAFB;border-radius:14px;padding:20px;border:2px solid #F3F4F6}
+.abtest-card h4{font-size:14px;font-weight:900;color:#1E1B2E;margin-bottom:6px}
+.abtest-card p{font-size:13px;font-weight:600;color:#6B7280;line-height:1.55}
+.benchmarks{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px}
+.benchmarks th{background:#7C3AED;color:white;padding:12px 16px;text-align:left;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+.benchmarks th:first-child{border-radius:12px 0 0 0}
+.benchmarks th:last-child{border-radius:0 12px 0 0}
+.benchmarks td{padding:12px 16px;font-weight:600;border-bottom:2px solid #F3F4F6;color:#374151}
+.benchmarks tr:hover td{background:#F9FAFB}
+.setup-steps{counter-reset:steps;list-style:none;padding:0;margin-top:8px}
+.setup-steps li{counter-increment:steps;display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:2px solid #F3F4F6}
+.setup-steps li:last-child{border-bottom:none}
+.setup-steps li::before{content:counter(steps);background:#7C3AED;color:white;width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;flex-shrink:0;box-shadow:0 4px 0 #5221B5}
+.setup-steps li p{font-size:14px;font-weight:600;color:#374151;line-height:1.55;padding-top:4px}
+.setup-steps li strong{color:#1E1B2E}
+</style>
+</head>
+<body>
+
+<div class="page-title">
+  <div style="display:inline-block;background:linear-gradient(135deg,#7C3AED,#9B60FF);border-radius:16px;padding:12px 20px;margin-bottom:16px;box-shadow:0 6px 0 #5221B5">
+    <svg width="24" height="28" viewBox="0 0 16 18" fill="none"><path d="M9.5 1L2 10.5H8L6.5 17L14 7.5H8L9.5 1Z" fill="white"/></svg>
+  </div>
+  <h1>Vibe Building Academy — Email Sequence</h1>
+  <p>5 emails · Confirmation + 4-email nurture · Kit (ConvertKit) ready</p>
+</div>
+
+<!-- ─── KIT SETUP ─── -->
+<div class="email-card" style="box-shadow:0 10px 0 rgba(124,58,237,.2);margin-bottom:52px">
+  <span class="email-tag tag-purple">🛠 Kit Setup Guide</span>
+  <h2 class="email-title">How to set this up in Kit</h2>
+  <ol class="setup-steps">
+    <li><p><strong>Fix the confirmation email:</strong> In Kit, go to <em>Forms → your VBA form → Settings → Incentive email</em>. Replace the body with Email 1 below. This is the double opt-in confirmation — it must contain the confirm button Kit auto-injects.</p></li>
+    <li><p><strong>Create an automation:</strong> Go to <em>Automations → New automation</em>. Set the trigger to <em>"Subscribes to a form"</em> → select your VBA form. Enable <em>"Only run when confirmed"</em> so people enter only after they click the confirmation link.</p></li>
+    <li><p><strong>Add a delay + emails:</strong> Add Email 2 immediately (Day 0 after confirm), then add Delay → Email 3 (4 days), Delay → Email 4 (8 days). The launch email (Email 5) should be sent as a <em>broadcast</em> to your VBA segment when you're ready to launch.</p></li>
+    <li><p><strong>Add exit condition:</strong> In the automation, add a condition: <em>if subscriber clicks any CTA link → remove from sequence</em>. This stops emails once someone takes action.</p></li>
+    <li><p><strong>Set sender details:</strong> Make sure the From name is <em>Marco van Hout</em> and the reply-to is <em>hello@vibebuilding.academy</em> on all emails in this sequence.</p></li>
+  </ol>
+</div>
+
+<!-- ─── EMAIL 1: CONFIRMATION ─── -->
+<div class="email-card">
+  <div class="email-num">1</div>
+  <span class="email-tag tag-purple">✉️ Email 1 — Confirmation</span>
+  <h2 class="email-title">The double opt-in confirm</h2>
+  <div class="email-timing">Triggered immediately at sign-up · Goes in Kit's Incentive Email slot</div>
+
+  <div class="section-label">Subject line options</div>
+  <div class="subject-opts">
+    <div class="subject-opt recommended">One click to confirm your early access → <span class="recommended-badge">Recommended</span></div>
+    <div class="subject-opt">Please confirm — your founding member spot is waiting</div>
+    <div class="subject-opt">Almost there. Confirm your VBA early access</div>
+  </div>
+
+  <div class="section-label">Preview text</div>
+  <div class="preview-text">You're almost in. One click and we'll take it from here.</div>
+
+  <div class="section-label">Email body</div>
+  <div class="email-body">
+    <p>Hi <span class="token">{{ subscriber.first_name | default: "there" }}</span>,</p>
+    <p>Thanks for signing up for early access to <strong>Vibe Building Academy</strong>.</p>
+    <p>Before we send you anything, we need to confirm this is really you — we hate spam as much as you do.</p>
+    <div class="cta-block">✅ Confirm my early access →</div>
+    <p style="font-size:13px;color:#9CA3AF;text-align:center;margin-top:-10px">Kit inserts your confirmation link automatically into the button above</p>
+    <p>Once you confirm, you're officially on the <strong>founding member list</strong> — first in line for seats, pricing and everything we send out before we open to the public.</p>
+    <p>Talk soon,</p>
+    <div class="signature">
+      <strong>Marco van Hout</strong><br>
+      <span style="color:#7C3AED;font-weight:700">Founder, Vibe Building Academy</span><br>
+      <span style="font-size:13px;color:#9CA3AF">Co-founder, Digital Society School &amp; Global Goals Jam</span>
+    </div>
+    <p style="margin-top:16px;font-size:13px;color:#6B7280;border-top:2px solid #F3F4F6;padding-top:14px">P.S. Cohort 1 is capped at 30 people. Your queue spot is reserved — but only once you confirm.</p>
+  </div>
+
+  <div class="kit-box">
+    <h4>🔧 Kit instructions</h4>
+    <p>This email lives at: <strong>Forms → [your VBA form] → Settings → Incentive email</strong><br>
+    Kit will automatically inject the confirmation button/link. Don't add your own — just write the body copy around it. The button above is for reference only.</p>
+  </div>
+</div>
+
+<!-- ─── EMAIL 2: WELCOME ─── -->
+<div class="email-card">
+  <div class="email-num">2</div>
+  <span class="email-tag tag-green">🎉 Email 2 — Welcome</span>
+  <h2 class="email-title">Welcome to the founding member list</h2>
+  <div class="email-timing">Sent immediately after confirmation · Day 0 of automation</div>
+
+  <div class="section-label">Subject line options</div>
+  <div class="subject-opts">
+    <div class="subject-opt recommended">You're in. Welcome to Vibe Building Academy 👋 <span class="recommended-badge">Recommended</span></div>
+    <div class="subject-opt">Welcome — and why you just made a smart move</div>
+    <div class="subject-opt">Welcome to the list. Here's what's coming.</div>
+  </div>
+
+  <div class="section-label">Preview text</div>
+  <div class="preview-text">You're officially on the founding member list. Here's what happens next.</div>
+
+  <div class="section-label">Email body</div>
+  <div class="email-body">
+    <p>Hi <span class="token">{{ subscriber.first_name | default: "there" }}</span>,</p>
+    <p>You're in. Welcome to the <strong>Vibe Building Academy</strong> founding member list.</p>
+    <p>Here's what that means: you're first in line for <em>everything</em> — seat selection, founding pricing, and all the content we're releasing before the official launch.</p>
+    <p>Over the next few weeks I'll be sharing:</p>
+    <p>→ Why the workforce shift is bigger and faster than most people realise<br>
+    → What "builder thinking" actually looks like in practice<br>
+    → A preview of what you'll be building in the programme<br>
+    → And when doors open — you'll know before anyone else</p>
+    <p>I built Vibe Building Academy because I've spent 20 years watching what happens when people get the tools, the confidence and the mindset to build things. They don't just advance their careers. They future-proof them.</p>
+    <p>You signed up because something in you knows the world is changing and you want to be on the right side of it. That instinct is correct.</p>
+    <p>Let's build something.</p>
+    <div class="signature">
+      <strong>Marco</strong><br>
+      <span style="color:#7C3AED;font-weight:700">Founder, Vibe Building Academy</span>
+    </div>
+    <p style="margin-top:16px;font-size:13px;color:#6B7280;border-top:2px solid #F3F4F6;padding-top:14px">P.S. Reply to this email and introduce yourself — tell me what you want to build. I read every one.</p>
+  </div>
+</div>
+
+<!-- ─── EMAIL 3: WORKFORCE SHIFT ─── -->
+<div class="email-card">
+  <div class="email-num">3</div>
+  <span class="email-tag tag-amber">📊 Email 3 — The Shift</span>
+  <h2 class="email-title">The workforce is shifting — here's the data</h2>
+  <div class="email-timing">4–5 days after Email 2</div>
+
+  <div class="section-label">Subject line options</div>
+  <div class="subject-opts">
+    <div class="subject-opt recommended">Your skills have a shorter shelf life than you think <span class="recommended-badge">Recommended</span></div>
+    <div class="subject-opt">85 million jobs. What's your plan?</div>
+    <div class="subject-opt">The half-life of skills is shrinking — fast</div>
+  </div>
+
+  <div class="section-label">Preview text</div>
+  <div class="preview-text">The data is uncomfortable. But knowing it puts you ahead.</div>
+
+  <div class="section-label">Email body</div>
+  <div class="email-body">
+    <p>Hi <span class="token">{{ subscriber.first_name | default: "there" }}</span>,</p>
+    <p>Here's an uncomfortable truth:</p>
+    <p><strong>The skills that got you where you are today will only carry you so far.</strong></p>
+    <p>The World Economic Forum estimates <strong>85 million jobs will be disrupted by AI</strong> — while 170 million new roles emerge. The catch? Those new roles demand skills most people don't have yet.</p>
+    <p><strong>44% of workers' core skills will be disrupted within the next three years.</strong></p>
+    <p>That's not a distant warning. That's now.</p>
+    <p>Here's what separates the professionals who thrive in this shift from those who get left behind:</p>
+    <p><strong>They build.</strong></p>
+    <p>Not necessarily code. Not necessarily software. They build systems, automations, tools and products that solve problems — using whatever AI puts in their hands.</p>
+    <p>Builders have always had an advantage in disruption. But right now, the tools available to non-technical people are extraordinary. You can build things today that would have required a developer two years ago.</p>
+    <p>That's exactly what Vibe Building Academy teaches.</p>
+    <p>More on what that looks like in practice — in my next email.</p>
+    <div class="signature">
+      <strong>Marco</strong><br>
+      <span style="color:#7C3AED;font-weight:700">Vibe Building Academy</span>
+    </div>
+  </div>
+</div>
+
+<!-- ─── EMAIL 4: BUILDER MENTALITY ─── -->
+<div class="email-card">
+  <div class="email-num">4</div>
+  <span class="email-tag tag-pink">🔨 Email 4 — Builder Thinking</span>
+  <h2 class="email-title">What builders actually do that others don't</h2>
+  <div class="email-timing">8–10 days after Email 2</div>
+
+  <div class="section-label">Subject line options</div>
+  <div class="subject-opts">
+    <div class="subject-opt recommended">What do builders actually DO that others don't? <span class="recommended-badge">Recommended</span></div>
+    <div class="subject-opt">The builder advantage (it's not what you think)</div>
+    <div class="subject-opt">Why some people thrive in every disruption</div>
+  </div>
+
+  <div class="section-label">Preview text</div>
+  <div class="preview-text">It's not about coding. It's a completely different way of seeing problems.</div>
+
+  <div class="section-label">Email body</div>
+  <div class="email-body">
+    <p>Hi <span class="token">{{ subscriber.first_name | default: "there" }}</span>,</p>
+    <p>I want to clear something up.</p>
+    <p>When I say "builder" — <strong>I don't mean programmer.</strong></p>
+    <p>I mean someone who, when they see a problem, thinks: <em>how do I build something that fixes this?</em></p>
+    <p>A builder in a marketing team builds an automation that saves 5 hours a week.<br>
+    A builder in HR creates a tool that screens applications 10× faster.<br>
+    A builder with a business idea ships a working prototype in a weekend — not a PowerPoint.</p>
+    <p>What they all have in common:</p>
+    <p><strong>Agility.</strong> They pick up new tools fast. They don't wait for someone else to figure it out first.</p>
+    <p><strong>Builder thinking.</strong> They see a gap and ask "what can I create?" — not "who can I hire?"</p>
+    <p><strong>Neuroplasticity.</strong> They've trained their brains to adapt quickly. Learning new tools doesn't faze them — it energises them.</p>
+    <p>This is what Vibe Building Academy trains. Not just the tools — though you'll learn the best AI tools available. But the underlying mindset that means you'll be able to pick up <em>whatever comes next</em>, too.</p>
+    <p>Launch is getting close. Cohort 1 is capped at 30 people. As a founding member, you pick first.</p>
+    <div class="signature">
+      <strong>Marco</strong><br>
+      <span style="color:#7C3AED;font-weight:700">Vibe Building Academy</span>
+    </div>
+    <p style="margin-top:16px;font-size:13px;color:#6B7280;border-top:2px solid #F3F4F6;padding-top:14px">P.S. Any questions about the programme? Just reply — I answer personally.</p>
+  </div>
+</div>
+
+<!-- ─── EMAIL 5: LAUNCH ─── -->
+<div class="email-card">
+  <div class="email-num">5</div>
+  <span class="email-tag tag-purple">🚀 Email 5 — Launch</span>
+  <h2 class="email-title">Doors open — founding member access</h2>
+  <div class="email-timing">Send as a broadcast when you launch · Not in the automation</div>
+
+  <div class="section-label">Subject line options</div>
+  <div class="subject-opts">
+    <div class="subject-opt recommended">🚀 Doors are open — your founding member access is inside <span class="recommended-badge">Recommended</span></div>
+    <div class="subject-opt">You waited. Here it is, <span class="token">{{ subscriber.first_name }}</span>.</div>
+    <div class="subject-opt">Cohort 1 is live — first pick is yours</div>
+  </div>
+
+  <div class="section-label">Preview text</div>
+  <div class="preview-text">Founding member pricing locked in. 30 seats. Yours to claim first.</div>
+
+  <div class="section-label">Email body</div>
+  <div class="email-body">
+    <p>Hi <span class="token">{{ subscriber.first_name | default: "there" }}</span>,</p>
+    <p>The moment you signed up for is here.</p>
+    <p><strong>Vibe Building Academy cohort 1 is officially open</strong> — and as a founding member, you have first access to seats and the lowest price we'll ever offer.</p>
+    <div class="cta-block cta-green">🚀 Claim my founding member seat →</div>
+    <p><strong>What you're getting:</strong><br>
+    → 4 weeks of live building sessions with Marco<br>
+    → A working product, automation or tool — built by you — by the end<br>
+    → Builder peer circles and community access<br>
+    → Founding member pricing, locked in forever</p>
+    <p><strong>Cohort 1 is capped at 30 people.</strong> This email goes to the founding member list first. General launch follows in 48 hours.</p>
+    <p>If you've been thinking about it — this is the moment.</p>
+    <div class="cta-block" style="margin-top:8px">Claim my seat →</div>
+    <div class="signature">
+      <strong>Marco</strong><br>
+      <span style="color:#7C3AED;font-weight:700">Founder, Vibe Building Academy</span>
+    </div>
+    <p style="margin-top:16px;font-size:13px;color:#6B7280;border-top:2px solid #F3F4F6;padding-top:14px">P.S. Questions before signing up? Reply to this email. I'll answer personally within a few hours.</p>
+  </div>
+
+  <div class="kit-box">
+    <h4>🔧 Kit instructions</h4>
+    <p>Send this as a <strong>Broadcast</strong> (not automation) to your VBA segment when you're ready to launch. Segment: subscribers tagged "vba-early-access" or on the VBA form list.</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ─── SEQUENCE FLOW ─── -->
+<div class="flow-box">
+  <h3>📊 Sequence Flow</h3>
+<pre>
+<span class="flow-purple">[Form sign-up]</span>
+       │
+       ▼
+<span class="flow-purple">Email 1: Confirmation</span> (Kit Incentive Email — immediate)
+       │
+  Confirmed? ──No──► <span class="flow-gray">No further emails</span>
+       │
+      Yes
+       │
+       ▼
+<span class="flow-green">Email 2: Welcome</span> (Day 0 — immediately after confirm)
+       │
+       │── Replied or clicked? ──► <span class="flow-green">Tag as "engaged"</span>
+       │
+       ▼ (wait 4-5 days)
+<span class="flow-green">Email 3: The Shift</span> — workforce data
+       │
+       ▼ (wait 4-5 days)
+<span class="flow-green">Email 4: Builder Thinking</span> — what builders do
+       │
+       ▼
+<span class="flow-gray">[Automation ends — wait for launch]</span>
+       │
+       ▼
+<span class="flow-purple">Email 5: Launch Broadcast</span> (manual send when ready)
+       │
+  Clicked CTA? ──Yes──► <span class="flow-green">[EXIT: Converted to student]</span>
+       │
+      No
+       ▼
+<span class="flow-gray">[Send 48h reminder broadcast if needed]</span>
+</pre>
+</div>
+
+<!-- ─── A/B TESTS ─── -->
+<div class="email-card" style="box-shadow:0 10px 0 rgba(245,158,11,.3)">
+  <span class="email-tag tag-amber">🧪 A/B Test Suggestions</span>
+  <h2 class="email-title">What to test first</h2>
+  <div class="abtests" style="margin-top:20px">
+    <div class="abtest-card">
+      <h4>Test 1 — Email 1 subject</h4>
+      <p>50/50 split between "One click to confirm →" vs "Please confirm — your founding member spot is waiting".<br>Measure: confirmation rate (not just open rate).</p>
+    </div>
+    <div class="abtest-card">
+      <h4>Test 2 — Email 3 opening</h4>
+      <p>Version A: leads with the data (85M jobs). Version B: leads with the personal hook ("Here's an uncomfortable truth").<br>Measure: click-through rate.</p>
+    </div>
+    <div class="abtest-card">
+      <h4>Test 3 — Email 2 PS</h4>
+      <p>Version A: ask them to reply with what they want to build (personal). Version B: link to the landing page teaser (direct).<br>Measure: reply rate vs click rate.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ─── BENCHMARKS ─── -->
+<div class="email-card" style="box-shadow:0 10px 0 #C4B5FD">
+  <span class="email-tag tag-purple">📈 Performance Benchmarks</span>
+  <h2 class="email-title">What good looks like for this sequence</h2>
+  <p style="margin:12px 0 20px;color:#6B7280;font-weight:600;font-size:15px">Benchmarks for a B2C/B2B professional education audience. Early lists tend to over-perform — aim for the upper range.</p>
+  <table class="benchmarks">
+    <thead>
+      <tr><th>Email</th><th>Open rate target</th><th>CTR target</th><th>Unsubscribe</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Email 1 — Confirmation</td><td>55–70%</td><td>35–55% (confirm rate)</td><td>—</td></tr>
+      <tr><td>Email 2 — Welcome</td><td>55–65%</td><td>8–15%</td><td>&lt;0.3%</td></tr>
+      <tr><td>Email 3 — The Shift</td><td>40–55%</td><td>5–10%</td><td>&lt;0.5%</td></tr>
+      <tr><td>Email 4 — Builder Thinking</td><td>38–50%</td><td>5–10%</td><td>&lt;0.5%</td></tr>
+      <tr><td>Email 5 — Launch</td><td>45–60%</td><td>12–22%</td><td>&lt;1%</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="text-align:center;padding:40px 0;color:#9CA3AF;font-size:13px;font-weight:700">
+  Vibe Building Academy · Built by Marco van Hout · hello@vibebuilding.academy
+</div>
+
+</body>
+</html>
