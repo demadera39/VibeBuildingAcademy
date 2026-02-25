@@ -520,23 +520,14 @@ updateCountdown();setInterval(updateCountdown,1000);
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 document.querySelectorAll('.explainer-steps,.stats-grid,.teaser-grid,.who-grid,.perks-grid,.mentality-grid,.founder-badges').forEach(g=>{g.querySelectorAll(':scope > *').forEach((el,i)=>{el.style.transitionDelay=(i*90)+'ms'})});
-var _kitPending=null;
-function kitMark(formId,successId){_kitPending={f:formId,s:successId};}
-document.addEventListener('DOMContentLoaded',function(){
-  var iframe=document.getElementById('kit-iframe');
-  if(!iframe)return;
-  var loaded=false;
-  iframe.addEventListener('load',function(){
-    if(!loaded){loaded=true;return;} // skip the initial empty load
-    if(_kitPending){
-      var f=document.getElementById(_kitPending.f);
-      var s=document.getElementById(_kitPending.s);
-      if(f)f.style.display='none';
-      if(s)s.style.display='block';
-      _kitPending=null;
-    }
-  });
-});
+function kitMark(formId,successId){
+  setTimeout(function(){
+    var f=document.getElementById(formId);
+    var s=document.getElementById(successId);
+    if(f)f.style.display='none';
+    if(s)s.style.display='block';
+  },1200);
+}
 </script>
 <iframe id="kit-iframe" name="kit-iframe" style="display:none;width:0;height:0;border:0" aria-hidden="true"></iframe>
 </body>
