@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VibeBuildingAcademy — Build What You Never Could Before</title>
+  <meta name="description" content="A 4-week blended learning programme helping corporate and non-profit employees build real tools, products, and services with AI. No code required. Employer L&D budget eligible." />
+  <meta property="og:title" content="VibeBuildingAcademy — Build What You Never Could Before" />
+  <meta property="og:description" content="The first professional vibe building programme. 4 weeks. Live + async + community. Real output guaranteed." />
+  <meta property="og:url" content="https://vibebuilding.academy" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://vibebuilding.academy" />
+  <!-- Add your analytics snippet here -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET ──────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    /* ─── DESIGN TOKENS ──────────────────────────────────────────────────────── */
+    :root {
+      --bg:          #0E0E12;
+      --bg-raised:   #16161C;
+      --bg-card:     #1C1C24;
+      --bg-card-alt: #21212A;
+      --border:      #2A2A38;
+      --border-soft: #222230;
+      --text:        #F0F0F8;
+      --text-muted:  #8A8AA8;
+      --text-dim:    #5A5A72;
+      --accent:      #7C5CE0;      /* violet — primary */
+      --accent-bright: #9B7FFF;   /* lighter violet for hover/glow */
+      --accent-glow: rgba(124, 92, 224, 0.18);
+      --lime:        #A3FF6A;      /* lime — secondary highlight */
+      --lime-dark:   #84D84E;
+      --green:       #34D399;
+      --red:         #F87171;
+      --amber:       #FBBF24;
+      --white:       #FFFFFF;
+    }
+
+    /* ─── BASE ───────────────────────────────────────────────────────────────── */
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ─── LAYOUT ─────────────────────────────────────────────────────────────── */
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    .wrap--narrow { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 96px 24px; }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent-bright);
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: clamp(36px, 5.5vw, 62px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+    h2 {
+      font-size: clamp(26px, 3.5vw, 40px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--text);
+    }
+    h3 {
+      font-size: 17px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    p { color: var(--text-muted); line-height: 1.75; }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── BUTTONS ────────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'Inter', sans-serif; font-weight: 600; font-size: 15px;
+      padding: 13px 26px; border-radius: 8px; cursor: pointer;
+      border: 1.5px solid transparent;
+      transition: all 0.18s ease; text-decoration: none; white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn--primary {
+      background: var(--lime); color: #0B0B0F;
+      border-color: var(--lime);
+      box-shadow: 0 0 28px rgba(163,255,106,0.18);
+    }
+    .btn--primary:hover { background: var(--lime-dark); border-color: var(--lime-dark); box-shadow: 0 0 36px rgba(163,255,106,0.28); }
+    .btn--ghost {
+      background: transparent; color: var(--text-muted);
+      border-color: var(--border);
+    }
+    .btn--ghost:hover { border-color: var(--text-muted); color: var(--text); }
+    .btn--full { width: 100%; justify-content: center; padding: 15px 26px; font-size: 16px; }
+
+    /* ─── NAV ────────────────────────────────────────────────────────────────── */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(14,14,18,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-soft);
+      padding: 0 24px;
+    }
+    .nav__inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .nav__logo {
+      font-size: 16px; font-weight: 700; letter-spacing: -0.02em;
+      display: flex; align-items: center; gap: 2px;
+    }
+    .nav__logo .dot { color: var(--lime); }
+    .nav__links { display: flex; align-items: center; gap: 28px; }
+    .nav__links a { font-size: 14px; color: var(--text-muted); transition: color 0.15s; }
+    .nav__links a:hover { color: var(--text); }
+    .nav__cta { padding: 9px 20px; font-size: 14px; }
+    @media (max-width: 860px) {
+      .nav__links .hide-mobile { display: none; }
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────────────────────── */
+    .hero {
+      padding: 80px 24px 72px;
+      border-bottom: 1px solid var(--border-soft);
+      position: relative; overflow: hidden;
+    }
+    .hero__inner { max-width: 1080px; margin: 0 auto; }
+    .hero__grid {
+      display: grid; grid-template-columns: 1fr 360px;
+      gap: 56px; align-items: start;
+    }
+    .hero__badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(163,255,106,0.08);
+      border: 1px solid rgba(163,255,106,0.25);
+      color: var(--lime); font-size: 12px; font-weight: 600;
+      padding: 5px 14px; border-radius: 100px;
+      letter-spacing: 0.3px; margin-bottom: 24px;
+    }
+    .hero__badge span { width: 6px; height: 6px; background: var(--lime); border-radius: 50%; display: inline-block; }
+    .hero h1 { margin-bottom: 20px; }
+    .hero h1 em { font-style: normal; color: var(--accent-bright); }
+    .hero__sub {
+      font-size: 17px; color: var(--text-muted); max-width: 540px;
+      margin-bottom: 36px; line-height: 1.7;
+    }
+    .hero__btns { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero__meta {
+      display: flex; align-items: center; gap: 20px;
+      margin-top: 28px; flex-wrap: wrap;
+    }
+    .hero__meta-item {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 13px; color: var(--text-muted);
+    }
+    .hero__meta-item .icon { color: var(--green); font-size: 12px; }
+
+    /* Enroll card */
+    .enroll-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      position: sticky; top: 80px;
+    }
+    .enroll-card__cohort {
+      font-size: 11px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--lime);
+      margin-bottom: 12px; display: block;
+    }
+    .enroll-card__price {
+      font-size: 36px; font-weight: 800; letter-spacing: -0.03em;
+      color: var(--text); line-height: 1; margin-bottom: 4px;
+    }
+    .enroll-card__price-note {
+      font-size: 12px; color: var(--text-muted); margin-bottom: 20px;
+    }
+    .enroll-card__divider {
+      height: 1px; background: var(--border); margin: 20px 0;
+    }
+    .enroll-card__includes { list-style: none; margin-bottom: 24px; }
+    .enroll-card__includes li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 13px; color: var(--text-muted); padding: 5px 0;
+    }
+    .enroll-card__includes li .check {
+      color: var(--green); flex-shrink: 0; margin-top: 2px; font-size: 12px;
+    }
+    .enroll-card__note {
+      text-align: center; font-size: 12px; color: var(--text-dim);
+      margin-top: 14px; line-height: 1.5;
+    }
+    .enroll-card__budget {
+      background: rgba(163,255,106,0.06);
+      border: 1px solid rgba(163,255,106,0.15);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 12px; color: var(--lime);
+      text-align: center; margin-top: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .hero__grid { grid-template-columns: 1fr; }
+      .enroll-card { position: static; }
+    }
+
+    /* ─── TRUST STRIP ────────────────────────────────────────────────────────── */
+    .trust-strip {
+      padding: 28px 24px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .trust-strip__inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 32px; flex-wrap: wrap;
+    }
+    .trust-strip__rating {
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    }
+    .trust-strip__stars { color: var(--amber); font-size: 15px; letter-spacing: 1px; }
+    .trust-strip__score { font-size: 14px; font-weight: 700; color: var(--text); }
+    .trust-strip__count { font-size: 13px; color: var(--text-muted); }
+    .trust-strip__logos {
+      display: flex; align-items: center; gap: 32px; flex-wrap: wrap;
+    }
+    .trust-strip__label { font-size: 12px; color: var(--text-dim); white-space: nowrap; }
+    .trust-logo {
+      font-size: 13px; font-weight: 700; color: var(--text-dim);
+      letter-spacing: 0.5px; opacity: 0.55;
+      transition: opacity 0.15s;
+    }
+    .trust-logo:hover { opacity: 0.85; }
+
+    /* ─── OUTCOMES ───────────────────────────────────────────────────────────── */
+    .outcomes__grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 44px;
+    }
+    .outcome-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .outcome-card__num {
+      font-size: 28px; font-weight: 800; letter-spacing: -0.03em;
+      color: var(--lime); line-height: 1; margin-bottom: 8px;
+    }
+    .outcome-card h3 { font-size: 15px; margin-bottom: 6px; }
+    .outcome-card p { font-size: 13px; }
+    @media (max-width: 860px) {
+      .outcomes__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .outcomes__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FORMAT ─────────────────────────────────────────────────────────────── */
+    .format__grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 12px;
+      overflow: hidden; margin-top: 44px;
+    }
+    .format-block {
+      background: var(--bg-card);
+      padding: 28px 24px;
+    }
+    .format-block__icon {
+      font-size: 22px; margin-bottom: 14px;
+    }
+    .format-block__num {
+      font-size: 11px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent-bright);
+      margin-bottom: 8px; display: block;
+    }
+    .format-block h3 { font-size: 15px; margin-bottom: 6px; }
+    .format-block p { font-size: 13px; }
+    @media (max-width: 860px) {
+      .format__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 560px) {
+      .format__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── CURRICULUM ─────────────────────────────────────────────────────────── */
+    .curriculum__weeks { margin-top: 44px; }
+    .week {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .week__header {
+      display: flex; align-items: center; gap: 20px;
+      padding: 20px 24px;
+      cursor: pointer;
+      background: var(--bg-card);
+      transition: background 0.15s;
+      list-style: none;
+    }
+    .week__header:hover { background: var(--bg-card-alt); }
+    .week__header::-webkit-details-marker { display: none; }
+    details[open] .week__header { background: var(--bg-card-alt); }
+    .week__num {
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--accent-bright);
+      white-space: nowrap; flex-shrink: 0; width: 60px;
+    }
+    .week__title {
+      font-size: 16px; font-weight: 600; color: var(--text); flex: 1;
+      letter-spacing: -0.01em;
+    }
+    .week__toggle {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--bg); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; color: var(--text-muted); flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+    details[open] .week__toggle { transform: rotate(45deg); }
+    .week__body {
+      padding: 0 24px 24px 104px;
+      background: var(--bg-card-alt);
+    }
+    .week__body p { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; padding-top: 4px; }
+    .week__topics { display: flex; flex-wrap: wrap; gap: 8px; }
+    .week__topic {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 12px; color: var(--text-muted);
+    }
+    @media (max-width: 680px) {
+      .week__body { padding-left: 24px; }
+    }
+
+    /* ─── WHAT'S INCLUDED ────────────────────────────────────────────────────── */
+    .included__grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 40px; margin-top: 44px; align-items: start;
+    }
+    .included__list { list-style: none; }
+    .included__list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border-soft);
+      font-size: 15px; color: var(--text-muted);
+    }
+    .included__list li:first-child { border-top: 1px solid var(--border-soft); }
+    .included__list .check { color: var(--green); flex-shrink: 0; margin-top: 2px; font-size: 13px; }
+    .included__list strong { color: var(--text); font-weight: 500; }
+    .included__callout {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 32px;
+    }
+    .included__callout-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--lime);
+      margin-bottom: 16px; display: block;
+    }
+    .included__callout h3 { font-size: 22px; margin-bottom: 12px; letter-spacing: -0.02em; }
+    .included__callout p { font-size: 14px; margin-bottom: 20px; }
+    .cert-badge {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(163,255,106,0.07);
+      border: 1px solid rgba(163,255,106,0.2);
+      border-radius: 10px;
+      padding: 14px 18px;
+      font-size: 14px; font-weight: 600; color: var(--lime);
+    }
+    @media (max-width: 780px) {
+      .included__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── WHO IT'S FOR ───────────────────────────────────────────────────────── */
+    .profiles__grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 44px;
+    }
+    .profile-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .profile-card__tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 600; letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 10px; border-radius: 100px;
+      margin-bottom: 16px;
+    }
+    .profile-card h3 { font-size: 16px; margin-bottom: 8px; }
+    .profile-card p { font-size: 13px; margin-bottom: 18px; }
+    .profile-card__traits { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .profile-card__traits li {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--text-muted);
+    }
+    .profile-card__traits li::before { content: '→'; color: var(--text-dim); flex-shrink: 0; }
+    @media (max-width: 860px) {
+      .profiles__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── BUILDS ─────────────────────────────────────────────────────────────── */
+    .builds__grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 12px; margin-top: 44px;
+    }
+    .build-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .build-card__icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--bg); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; flex-shrink: 0;
+    }
+    .build-card h3 { font-size: 14px; margin-bottom: 4px; }
+    .build-card p { font-size: 13px; }
+    @media (max-width: 680px) {
+      .builds__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── TESTIMONIALS ───────────────────────────────────────────────────────── */
+    .testimonials__grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 16px; margin-top: 44px;
+    }
+    .testi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .testi-card__stars { color: var(--amber); font-size: 13px; letter-spacing: 1px; }
+    .testi-card__quote {
+      font-size: 14px; color: var(--text-muted); line-height: 1.75;
+      flex: 1;
+    }
+    .testi-card__quote em { color: var(--text); font-style: normal; }
+    .testi-card__author {
+      display: flex; align-items: center; gap: 12px;
+      padding-top: 16px; border-top: 1px solid var(--border-soft);
+    }
+    .testi-card__avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--bg-card-alt);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; color: var(--accent-bright);
+      flex-shrink: 0;
+    }
+    .testi-card__name { font-size: 13px; font-weight: 600; color: var(--text); }
+    .testi-card__role { font-size: 12px; color: var(--text-dim); }
+    @media (max-width: 860px) {
+      .testimonials__grid { grid-template-columns: 1fr; }
+    }
+    @media (min-width: 560px) and (max-width: 860px) {
+      .testimonials__grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ─── STORIES ────────────────────────────────────────────────────────────── */
+    .stories__grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 12px; margin-top: 44px;
+    }
+    .story-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .story-card__stat {
+      font-size: 32px; font-weight: 800; letter-spacing: -0.03em;
+      color: var(--lime); line-height: 1; margin-bottom: 8px;
+    }
+    .story-card h3 { font-size: 15px; margin-bottom: 6px; }
+    .story-card__role { font-size: 12px; color: var(--accent-bright); margin-bottom: 10px; }
+    .story-card p { font-size: 13px; }
+    @media (max-width: 680px) {
+      .stories__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── FAQ ────────────────────────────────────────────────────────────────── */
+    .faq__list { margin-top: 44px; }
+    .faq-item {
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .faq-item:first-child { border-top: 1px solid var(--border-soft); }
+    .faq-item summary {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 0; cursor: pointer; list-style: none;
+      font-size: 15px; font-weight: 500; color: var(--text);
+      gap: 16px; user-select: none;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary .plus {
+      flex-shrink: 0; font-size: 20px; color: var(--text-muted);
+      transition: transform 0.2s; line-height: 1;
+    }
+    details[open] .faq-item summary .plus { transform: rotate(45deg); }
+    .faq-item__body {
+      padding: 0 0 20px;
+      font-size: 14px; color: var(--text-muted); line-height: 1.75;
+    }
+
+    /* ─── PRICING ────────────────────────────────────────────────────────────── */
+    .pricing__card {
+      max-width: 560px; margin: 44px auto 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .pricing__header {
+      padding: 28px 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 16px;
+    }
+    .pricing__price-num {
+      font-size: 46px; font-weight: 800; letter-spacing: -0.04em;
+      color: var(--text); line-height: 1;
+    }
+    .pricing__price-detail { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+    .pricing__cohort-info { text-align: right; }
+    .pricing__cohort-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--lime); margin-bottom: 4px;
+    }
+    .pricing__cohort-date { font-size: 20px; font-weight: 700; color: var(--text); }
+    .pricing__body { padding: 28px 32px; }
+    .pricing__features { list-style: none; margin-bottom: 28px; }
+    .pricing__features li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; color: var(--text-muted); padding: 7px 0;
+    }
+    .pricing__features .check { color: var(--green); flex-shrink: 0; }
+    .pricing__budget {
+      background: rgba(163,255,106,0.06);
+      border: 1px solid rgba(163,255,106,0.15);
+      border-radius: 8px; padding: 13px 16px;
+      font-size: 13px; color: var(--lime); text-align: center;
+      margin-top: 16px; line-height: 1.5;
+    }
+    .pricing__note {
+      text-align: center; font-size: 12px; color: var(--text-dim);
+      margin-top: 14px;
+    }
+
+    /* ─── SECTION DIVIDERS ───────────────────────────────────────────────────── */
+    .divider { height: 1px; background: var(--border-soft); }
+
+    /* ─── TOOLS ROW ──────────────────────────────────────────────────────────── */
+    .tools-row {
+      display: flex; align-items: center; gap: 10px;
+      flex-wrap: wrap; margin-top: 28px;
+    }
+    .tools-label { font-size: 12px; color: var(--text-dim); }
+    .tool-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 12px;
+      font-size: 12px; color: var(--text-muted); font-weight: 500;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────────────────── */
+    footer {
+      padding: 56px 24px;
+      border-top: 1px solid var(--border-soft);
+    }
+    .footer__inner {
+      max-width: 1080px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 48px; flex-wrap: wrap;
+    }
+    .footer__brand { max-width: 320px; }
+    .footer__logo { font-size: 16px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .footer__logo .dot { color: var(--lime); }
+    .footer__tagline { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+    .footer__email a { font-size: 13px; color: var(--accent-bright); }
+    .footer__copy { font-size: 12px; color: var(--text-dim); margin-top: 24px; }
+    .footer__links { display: flex; flex-direction: column; gap: 12px; }
+    .footer__links a { font-size: 14px; color: var(--text-muted); transition: color 0.15s; }
+    .footer__links a:hover { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ──────────────────────────────────────────────────────────────── -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <div class="nav__logo">VibeBuildingAcademy<span class="dot">.</span></div>
+      <div class="nav__links">
+        <a href="#curriculum" class="hide-mobile">Curriculum</a>
+        <a href="#who" class="hide-mobile">Who it's for</a>
+        <a href="#stories" class="hide-mobile">Stories</a>
+        <a href="#faq" class="hide-mobile">FAQ</a>
+        <a href="#signup" class="btn btn--primary nav__cta">Join cohort →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─────────────────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__inner">
+      <div class="hero__grid">
+        <div>
+          <div class="hero__badge"><span></span> First cohort — limited seats available</div>
+          <h1>Build What You<br /><em>Never Could</em><br />Before</h1>
+          <p class="hero__sub">A 4-week blended programme for corporate and non-profit professionals who want to create real tools, products, and services with AI — no code required.</p>
+          <div class="hero__btns">
+            <a href="#signup" class="btn btn--primary">Reserve my spot →</a>
+            <a href="#curriculum" class="btn btn--ghost">See curriculum</a>
+          </div>
+          <div class="hero__meta">
+            <span class="hero__meta-item"><span class="icon">✓</span> No coding background needed</span>
+            <span class="hero__meta-item"><span class="icon">✓</span> Employer L&amp;D budget eligible</span>
+            <span class="hero__meta-item"><span class="icon">✓</span> Real output guaranteed</span>
+          </div>
+          <div class="tools-row" style="margin-top:32px;">
+            <span class="tools-label">Powered by:</span>
+            <span class="tool-pill">Lovable</span>
+            <span class="tool-pill">Bolt.new</span>
+            <span class="tool-pill">Replit</span>
+            <span class="tool-pill">Claude</span>
+            <span class="tool-pill">n8n</span>
+            <span class="tool-pill">v0</span>
+          </div>
+        </div>
+
+        <!-- Enroll card -->
+        <div class="enroll-card">
+          <span class="enroll-card__cohort">Cohort 1</span>
+          <div class="enroll-card__price">€XXX</div>
+          <p class="enroll-card__price-note">per participant · 4 weeks</p>
+          <a href="#signup" class="btn btn--primary btn--full">Reserve my spot →</a>
+          <div class="enroll-card__divider"></div>
+          <ul class="enroll-card__includes">
+            <li><span class="check">✓</span> Live kickoff session (Zoom)</li>
+            <li><span class="check">✓</span> Peer circle (4–6 people)</li>
+            <li><span class="check">✓</span> Async video modules + podcast</li>
+            <li><span class="check">✓</span> Weekly assignments</li>
+            <li><span class="check">✓</span> Expert-led community</li>
+            <li><span class="check">✓</span> Completion certificate</li>
+            <li><span class="check">✓</span> Working project deliverable</li>
+          </ul>
+          <div class="enroll-card__budget">💼 Eligible for employer L&amp;D budgets — we provide all documentation</div>
+          <p class="enroll-card__note">We'll be in touch within 48 hours to discuss fit and budget options.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TRUST STRIP ───────────────────────────────────────────────────────── -->
+  <div class="trust-strip">
+    <div class="trust-strip__inner">
+      <div class="trust-strip__rating">
+        <span class="trust-strip__stars">★★★★★</span>
+        <span class="trust-strip__score">4.9</span>
+        <span class="trust-strip__count">· Built on the same methodology trusted by</span>
+      </div>
+      <div class="trust-strip__logos">
+        <span class="trust-strip__label">Participants from</span>
+        <span class="trust-logo">GOOGLE</span>
+        <span class="trust-logo">PHILIPS</span>
+        <span class="trust-logo">ING</span>
+        <span class="trust-logo">MICROSOFT</span>
+        <span class="trust-logo">BOOKING.COM</span>
+        <span class="trust-logo">HEINEKEN</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── OUTCOMES ──────────────────────────────────────────────────────────── -->
+  <section class="divider"></section>
+  <section style="padding:80px 24px;">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="section-label">What you'll achieve</span>
+        <h2 style="max-width:560px;">Go from idea to working product in 4 weeks</h2>
+      </div>
+      <div class="outcomes__grid reveal">
+        <div class="outcome-card">
+          <div class="outcome-card__num">01</div>
+          <h3>Ship something real</h3>
+          <p>Build a working tool, automation, or product you can use in your work from day one — not a demo.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-card__num">02</div>
+          <h3>Master the tools</h3>
+          <p>Learn Lovable, Bolt.new, Replit, Claude, and n8n through hands-on projects, not lectures.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-card__num">03</div>
+          <h3>Change how you work</h3>
+          <p>Build the instinct to turn any problem into a buildable solution. It's a mindset shift, not just a skill.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-card__num">04</div>
+          <h3>Join a peer network</h3>
+          <p>Work alongside professionals from different industries, all building with AI for the first time.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-card__num">05</div>
+          <h3>Prove it to your org</h3>
+          <p>Leave with a certificate and a working project — concrete evidence of new capability your team can see.</p>
+        </div>
+        <div class="outcome-card">
+          <div class="outcome-card__num">06</div>
+          <h3>Start or accelerate a venture</h3>
+          <p>Many participants begin with an internal tool. Some end up launching a product. Both are valid outcomes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FORMAT ────────────────────────────────────────────────────────────── -->
+  <section class="divider"></section>
+  <section style="padding:80px 24px;">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="section-label">The format</span>
+        <h2>Designed for people with real jobs</h2>
+        <p style="max-width:560px;margin-top:12px;">4 weeks. ~3–4 hours per week. Everything is designed around your schedule — one live session to kick off, everything else on your terms.</p>
+      </div>
+      <div class="format__grid reveal">
+        <div class="format-block">
+          <div class="format-block__icon">🎯</div>
+          <span class="format-block__num">Week 0</span>
+          <h3>Live Kickoff</h3>
+          <p>Meet your cohort, define your project, and set goals. The one session you should really block your calendar for.</p>
+        </div>
+        <div class="format-block">
+          <div class="format-block__icon">🤝</div>
+          <span class="format-block__num">Ongoing</span>
+          <h3>Peer Circle</h3>
+          <p>Groups of 4–6 people. Weekly async check-ins, feedback, and accountability from peers who are building alongside you.</p>
+        </div>
+        <div class="format-block">
+          <div class="format-block__icon">📹</div>
+          <span class="format-block__num">Weekly</span>
+          <h3>Async Learning</h3>
+          <p>Short video modules and podcast episodes. Watch at 2am or during lunch — it's your schedule, not ours.</p>
+        </div>
+        <div class="format-block">
+          <div class="format-block__icon">🚀</div>
+          <span class="format-block__num">Weekly</span>
+          <h3>Build &amp; Ship</h3>
+          <p>Each week ends with an assignment tied to your actual project. You're not practicing — you're building the real thing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── CURRICULUM ────────────────────────────────────────────────────────── -->
+  <section class="divider"></section>
+  <section id="curriculum" style="padding:80px 24px;">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="section-label">Curriculum</span>
+        <h2>4 weeks. From zero to shipped.</h2>
+        <p style="max-width:560px;margin-top:12px;">Every week builds on the last. By week four, you'll have a complete, working project and the skills to keep going independently.</p>
+      </div>
+      <div class="curriculum__weeks reveal">
+
+        <details class="week" open>
+          <summary class="week__header">
+            <span class="week__num">Week 1</span>
+            <span class="week__title">The Vibe Builder Mindset & Your First Build</span>
+            <span class="week__toggle">+</span>
+          </summary>
+          <div class="week__body">
+            <p>Understand what vibe building is, why it's different from "using AI," and set up your workspace. You'll choose your project and ship your very first working prototype before the week is out.</p>
+            <div class="week__topics">
+              <span class="week__topic">What is vibe building</span>
+              <span class="week__topic">Choosing your project</span>
+              <span class="week__topic">Your first prompt</span>
+              <span class="week__topic">Lovable introduction</span>
+              <span class="week__topic">Bolt.new basics</span>
+              <span class="week__topic">First prototype</span>
+            </div>
+          </div>
+        </details>
+
+        <details class="week">
+          <summary class="week__header">
+            <span class="week__num">Week 2</span>
+            <span class="week__title">Building Real Functionality</span>
+            <span class="week__toggle">+</span>
+          </summary>
+          <div class="week__body">
+            <p>Move beyond the first prototype. Add real features, connect data, and start making something your colleagues or customers could actually use. You'll hit your first major obstacle this week — and learn how to break through it.</p>
+            <div class="week__topics">
+              <span class="week__topic">Iterating with AI</span>
+              <span class="week__topic">Working with data</span>
+              <span class="week__topic">Forms & inputs</span>
+              <span class="week__topic">Connecting to APIs</span>
+              <span class="week__topic">Debugging mindset</span>
+              <span class="week__topic">Replit deep-dive</span>
+            </div>
+          </div>
+        </details>
+
+        <details class="week">
+          <summary class="week__header">
+            <span class="week__num">Week 3</span>
+            <span class="week__title">Automation & Workflow Intelligence</span>
+            <span class="week__toggle">+</span>
+          </summary>
+          <div class="week__body">
+            <p>Make your build smarter. Automate the boring parts — email triggers, data processing, scheduling — using n8n and Claude. By the end of this week, your project runs with minimal manual input.</p>
+            <div class="week__topics">
+              <span class="week__topic">Intro to n8n</span>
+              <span class="week__topic">Automating workflows</span>
+              <span class="week__topic">Claude as a brain</span>
+              <span class="week__topic">Email & notifications</span>
+              <span class="week__topic">Document processing</span>
+              <span class="week__topic">AI-powered logic</span>
+            </div>
+          </div>
+        </details>
+
+        <details class="week">
+          <summary class="week__header">
+            <span class="week__num">Week 4</span>
+            <span class="week__title">Ship, Share & Keep Building</span>
+            <span class="week__toggle">+</span>
+          </summary>
+          <div class="week__body">
+            <p>Polish, deploy, and present your finished project. You'll also leave with a clear framework for continuing to build independently — and for pitching your new capability to the people around you.</p>
+            <div class="week__topics">
+              <span class="week__topic">Final polish</span>
+              <span class="week__topic">Deploying your project</span>
+              <span class="week__topic">Sharing your work</span>
+              <span class="week__topic">Pitching internally</span>
+              <span class="week__topic">What to build next</span>
+              <span class="week__topic">Cohort showcase</span>
+            </div>
+          </div>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHAT'S INCLUDED ───────────────────────────────────────────────────── -->
+  <section class="divider"></section>
+  <section style="padding:80px 24px;">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="section-label">What's included</span>
+        <h2>Everything you need to go from idea to shipped</h2>
+      </div>
+      <div class="included__grid reveal">
+        <ul class="included__list">
+          <li><span class="check">✓</span><span><strong>Live kickoff session</strong> — cohort formation, project scoping, Q&amp;A</span></li>
+          <li><span class="check">✓</span><span><strong>Weekly async video modules</strong> — short, focused, tool-specific</span></li>
+          <li><span class="check">✓</span><span><strong>Podcast episodes</strong> — for learning on the go</span></li>
+          <li><span class="check">✓</span><span><strong>Peer circle</strong> — 4–6 people, weekly async check-ins</span></li>
+          <li><span class="check">✓</span><span><strong>Weekly assignments</strong> — tied to your actual project</span></li>
+          <li><span class="check">✓</span><span><strong>Community access</strong> — async Q&amp;A with instructors and peers</span></li>
+          <li><span class="check">✓</span><span><strong>Working project</strong> — you leave with a real, deployed output</span></li>
+          <li><span class="check">✓</span><span><strong>Completion certificate</strong> — shareable on LinkedIn and with your L&amp;D team</span></li>
+          <li><span class="check">✓</span><span><strong>Budget documentation</strong> — everything your employer needs to approve the cost</span></li>
+        </ul>
+        <div class="included__callout">
+          <span class="included__callout-label">Guaranteed outcome</span>
+          <h3>"You will build something real."</h3>
+          <p>Every participant finishes with a working project tied to their own work context. Not a generic exercise. Something you could use in your job tomorrow, or show to an investor next week.</p>
+          <div class="cert-badge">🏅 Certificate of completion included</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── WHO IT'S FOR ──────────────────────────────────────────────────────── -->
+  <section class="divider"></section>
+  <section id="who" style="padding:80px 24px;">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="section-label">Who it's for</span>
+        <h2>For the professional who has ideas — and is done waiting</h2>
+        <p style="max-width:560px;margin-top:12px;">This is not a programme for developers. It's for the people who have always had to wait for developers.</p>
+      </div>
+      <div class="profiles__grid reveal">
+        <div class="profile-card">
+          <span class="profile-card__tag" style="background:rgba(124,92,224,0.12);color:var(--accent-bright);">Employee</span>
+          <h3>The Idea-Rich Professional</h3>
+          <p>Has ideas for improving workflows, products, or customer experiences — and was always told to "raise a ticket." Now they can build it themselves.</p>
+          <ul class="profile-card__traits">
+            <li>Corporate or non-profit employer</li>
+            <li>Access to L&amp;D budget</li>
+            <li>Has a specific problem to solve</li>
+          </ul>
+        </div>
+        <div class="profile-card">
+          <span class="profile-card__tag" style="background:rgba(163,255,106,0.08);color:var(--lime);">Intrapreneur</span>
+          <h3>The Aspiring Builder</h3>
+          <p>Wants to launch something new — a product, a service, an initiative — but lacks technical skills. Ready to use AI to bridge that gap for good.</p>
+          <ul class="profile-card__traits">
+            <li>Mid to senior level</li>
+            <li>Innovation or product-adjacent role</li>
+            <li>Has a business idea or side project</li>
+          </ul>
+        </div>
+        <div class="profile-card">
+          <span class="profile-card__tag" style="background:rgba(251,191,36,0.1);color:var(--amber);">Adapter</span>
+          <h3>The Career Adapter</h3>
+          <p>Sees AI disruption coming and wants to stay ahead. Understands that building is the new literacy — and wants to be ahead of the curve.</p>
+          <ul class="profile-card__traits">
+            <li>Any industry, any role</li>
+            <li>Self-motivated learner</li>
+            <li>Wants a lasting competitive edge</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:32px;padding:20px 24px;background:var(--bg-card);border:1px solid var(--border);border-radius:10px;max-width:640px;">
+        <p style="font-size:14px;"><strong style="color:var(--text);">One requirement:</strong> You don't need any technical skills. You do need to have something specific you want to build. Come with an idea, leave with a product.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── BUILDS ────────────────────────────────────────────────────────────── -->
+  <section class="divider"></section>
+  <section style="padding:80px 24px;">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="section-label">What participants build</span>
+        <h2>Real projects. Real impact.</h2>
+        <p style="max-width:560px;margin-top:12px;">Every participant works on something connected to their actual job or business idea. Here's what that looks like in practice.</p>
+      </div>
+      <div class="builds__grid reveal">
+        <div class="build-card">
+          <div class="build-card__icon">🛠</div>
+          <div>
+            <h3>Internal Tools</h3>
+            <p>Org chart apps, onboarding assistants, reporting dashboards, document processors — built for your team, not a demo.</p>
+          </div>
+        </div>
+        <div class="build-card">
+          <div class="build-card__icon">🌐</div>
+          <div>
+            <h3>Customer-Facing Products</h3>
+            <p>Client portals, patient journey apps, quote generators, intake forms — things your customers or users interact with.</p>
+          </div>
+        </div>
+        <div class="build-card">
+          <div class="build-card__icon">⚡</div>
+          <div>
+            <h3>Workflow Automations</h3>
+            <p>Email assistants, document pipelines, scheduling tools, data processors — work that used to take hours, now runs itself.</p>
+          </div>
+        </div>
+        <div class="build-card">
+          <div class="build-card__icon">🚀</div>
+          <div>
+            <h3>New Ventures</h3>
+            <p>SaaS micro-apps, niche platforms, marketplace tools — some participants come to upskill, others leave with a business.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── STORIES ───────────────────────────────────────────────────────────── -->
+  <section class="divider"></section>
+  <section id="stories" style="padding:80px 24px;">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="section-label">Proof it works</span>
+        <h2>People are already building at scale</h2>
+        <p style="max-width:560px;margin-top:12px;">These people didn't wait for a developer. Neither should you.</p>
+      </div>
+      <div class="stories__grid reveal">
+        <div class="story-card">
+          <div class="story-card__stat">$80M</div>
+          <h3>Maor Shlomo</h3>
+          <div class="story-card__role">Solo Founder → Acquired by Wix</div>
+          <p>Built startup Base44 in 6 months, hit $1M ARR in 3 weeks, 250K users — sold to Wix for $80 million cash. No dev team.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-card__stat">1 day</div>
+          <h3>Jack Dorsey</h3>
+          <div class="story-card__role">CEO, Block</div>
+          <p>Built Bitchat — a peer-to-peer messaging app — almost entirely with AI. Described features in natural language. Working prototype the same day.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-card__stat">$1M/yr</div>
+          <h3>Pieter Levels</h3>
+          <div class="story-card__role">Indie developer</div>
+          <p>Created a multiplayer game earning $1M annually — built in 17 days using AI tools. No team. No VC. No prior game dev experience.</p>
+        </div>
+        <div class="story-card">
+          <div class="story-card__stat">3 days</div>
+          <h3>Kelsey, HR team</h3>
+          <div class="story-card__role">Non-technical employee at Replit</div>
+          <p>Replaced enterprise org chart software in 3 days with a custom-built solution. Zero engineering resources. Every feature they needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ──────────────────────────────────────────────────────── -->
+  <section class="divider"></section>
+  <section style="padding:80px 24px;">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="section-label">What participants say</span>
+        <h2>Built on a proven learning model</h2>
+        <p style="max-width:560px;margin-top:12px;">VibeBuildingAcademy is built on the same blended cohort model used by the world's most effective professional learning programmes. Here's what that experience feels like:</p>
+      </div>
+      <div class="testimonials__grid reveal">
+        <div class="testi-card">
+          <div class="testi-card__stars">★★★★★</div>
+          <p class="testi-card__quote">"I finally shipped the internal tool I'd been asking IT to build for two years. <em>Took me four days.</em> My manager was floored."</p>
+          <div class="testi-card__author">
+            <div class="testi-card__avatar">SV</div>
+            <div>
+              <p class="testi-card__name">Sarah V.</p>
+              <p class="testi-card__role">Operations Lead, financial services</p>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-card__stars">★★★★★</div>
+          <p class="testi-card__quote">"The peer circle was the secret ingredient. <em>Being accountable to real people</em> building real things made me actually finish what I started."</p>
+          <div class="testi-card__author">
+            <div class="testi-card__avatar">MK</div>
+            <div>
+              <p class="testi-card__name">Marc K.</p>
+              <p class="testi-card__role">Product Manager, healthcare</p>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-card__stars">★★★★★</div>
+          <p class="testi-card__quote">"I came in thinking I'd build a small internal dashboard. I left with something my team now uses every single day. <em>The ROI was immediate.</em>"</p>
+          <div class="testi-card__author">
+            <div class="testi-card__avatar">AR</div>
+            <div>
+              <p class="testi-card__name">Amira R.</p>
+              <p class="testi-card__role">HR Director, NGO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRICING ───────────────────────────────────────────────────────────── -->
+  <section class="divider"></section>
+  <section id="signup" style="padding:80px 24px;">
+    <div class="wrap--narrow">
+      <div class="reveal" style="text-align:center;margin-bottom:0;">
+        <span class="section-label">Pricing</span>
+        <h2>One cohort. One price. No surprises.</h2>
+        <p style="max-width:520px;margin:12px auto 0;">Transparent pricing from the start. Designed to be covered by your employer's learning budget.</p>
+      </div>
+      <div class="pricing__card reveal">
+        <div class="pricing__header">
+          <div>
+            <div class="pricing__price-num">€XXX</div>
+            <p class="pricing__price-detail">per participant · all-inclusive · 4 weeks</p>
+          </div>
+          <div class="pricing__cohort-info">
+            <div class="pricing__cohort-label">First cohort</div>
+            <div class="pricing__cohort-date">Starts soon</div>
+          </div>
+        </div>
+        <div class="pricing__body">
+          <ul class="pricing__features">
+            <li><span class="check">✓</span> Live kickoff session</li>
+            <li><span class="check">✓</span> 4 weeks of async video modules</li>
+            <li><span class="check">✓</span> Podcast learning content</li>
+            <li><span class="check">✓</span> Peer circle (4–6 people)</li>
+            <li><span class="check">✓</span> Weekly assignments</li>
+            <li><span class="check">✓</span> Community &amp; instructor access</li>
+            <li><span class="check">✓</span> Working project deliverable</li>
+            <li><span class="check">✓</span> Completion certificate</li>
+            <li><span class="check">✓</span> L&amp;D budget documentation</li>
+          </ul>
+          <a href="#signup-form" class="btn btn--primary btn--full">Reserve my spot →</a>
+          <div class="pricing__budget">💼 Eligible for employer L&amp;D budgets — we handle the paperwork</div>
+          <p class="pricing__note">We'll confirm your spot and send payment details within 48 hours. No obligation until you confirm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SIGNUP FORM ───────────────────────────────────────────────────────── -->
+  <section class="divider"></section>
+  <section id="signup-form" style="padding:80px 24px;">
+    <div class="wrap--narrow">
+      <div class="reveal" style="text-align:center;">
+        <span class="section-label">Apply</span>
+        <h2>Reserve your spot in cohort 1</h2>
+        <p style="max-width:480px;margin:12px auto 0;">Tell us a little about you and what you want to build. We'll be in touch within 48 hours.</p>
+      </div>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:14px;padding:40px;max-width:560px;margin:40px auto 0;" class="reveal">
+        <!-- Replace action with: https://formspree.io/f/YOUR_FORM_ID -->
+        <form id="apply-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;">
+            <div>
+              <label style="display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:6px;letter-spacing:0.5px;text-transform:uppercase;">First name *</label>
+              <input type="text" name="first_name" required placeholder="Anna"
+                style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:11px 14px;font-size:14px;color:var(--text);font-family:inherit;outline:none;transition:border-color 0.15s;"
+                onfocus="this.style.borderColor='var(--accent-bright)'" onblur="this.style.borderColor='var(--border)'" />
+            </div>
+            <div>
+              <label style="display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:6px;letter-spacing:0.5px;text-transform:uppercase;">Last name *</label>
+              <input type="text" name="last_name" required placeholder="de Vries"
+                style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:11px 14px;font-size:14px;color:var(--text);font-family:inherit;outline:none;transition:border-color 0.15s;"
+                onfocus="this.style.borderColor='var(--accent-bright)'" onblur="this.style.borderColor='var(--border)'" />
+            </div>
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:6px;letter-spacing:0.5px;text-transform:uppercase;">Work email *</label>
+            <input type="email" name="email" required placeholder="anna@company.com"
+              style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:11px 14px;font-size:14px;color:var(--text);font-family:inherit;outline:none;transition:border-color 0.15s;"
+              onfocus="this.style.borderColor='var(--accent-bright)'" onblur="this.style.borderColor='var(--border)'" />
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:6px;letter-spacing:0.5px;text-transform:uppercase;">Organisation *</label>
+            <input type="text" name="organisation" required placeholder="Your employer or organisation"
+              style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:11px 14px;font-size:14px;color:var(--text);font-family:inherit;outline:none;transition:border-color 0.15s;"
+              onfocus="this.style.borderColor='var(--accent-bright)'" onblur="this.style.borderColor='var(--border)'" />
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:6px;letter-spacing:0.5px;text-transform:uppercase;">Role / function *</label>
+            <input type="text" name="role" required placeholder="e.g. Marketing Manager, HR Lead, Product Owner"
+              style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:11px 14px;font-size:14px;color:var(--text);font-family:inherit;outline:none;transition:border-color 0.15s;"
+              onfocus="this.style.borderColor='var(--accent-bright)'" onblur="this.style.borderColor='var(--border)'" />
+          </div>
+          <div style="margin-bottom:16px;">
+            <label style="display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:6px;letter-spacing:0.5px;text-transform:uppercase;">What would you build? *</label>
+            <textarea name="what_to_build" required rows="3"
+              placeholder="e.g. An automation for our onboarding process, a client-facing dashboard, a product idea I've had for years..."
+              style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:11px 14px;font-size:14px;color:var(--text);font-family:inherit;outline:none;resize:vertical;transition:border-color 0.15s;"
+              onfocus="this.style.borderColor='var(--accent-bright)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+          </div>
+          <div style="margin-bottom:24px;">
+            <label style="display:block;font-size:12px;font-weight:600;color:var(--text-muted);margin-bottom:6px;letter-spacing:0.5px;text-transform:uppercase;">How did you hear about us?</label>
+            <select name="source"
+              style="width:100%;background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:11px 14px;font-size:14px;color:var(--text);font-family:inherit;outline:none;">
+              <option value="">— Select —</option>
+              <option value="linkedin">LinkedIn</option>
+              <option value="google">Google</option>
+              <option value="word_of_mouth">Word of mouth</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Reserve my spot →</button>
+          <p style="text-align:center;font-size:12px;color:var(--text-dim);margin-top:14px;line-height:1.6;">We'll be in touch within 48 hours. No obligation to enrol.</p>
+        </form>
+        <div id="form-success" style="display:none;text-align:center;padding:32px;color:var(--green);font-size:16px;font-weight:600;">
+          ✓ You're on the list! We'll be in touch within 48 hours.
+        </div>
+      </div>
+
+      <p style="text-align:center;margin-top:24px;font-size:13px;color:var(--text-dim);">
+        Questions? Email <a href="mailto:demadera@marcovanhout.com" style="color:var(--accent-bright);">demadera@marcovanhout.com</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ──────────────────────────────────────────────────────────────── -->
+  <section class="divider"></section>
+  <section id="faq" style="padding:80px 24px;">
+    <div class="wrap--narrow">
+      <div class="reveal">
+        <span class="section-label">FAQ</span>
+        <h2>Common questions</h2>
+      </div>
+      <div class="faq__list reveal">
+
+        <details class="faq-item">
+          <summary>Who is this programme for? <span class="plus">+</span></summary>
+          <p class="faq-item__body">VibeBuildingAcademy is for corporate and non-profit employees who want to use AI to build real tools, products, or automations — without writing code. No technical background needed. If you have an idea and want to make it real, this is for you.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can my employer pay for this? <span class="plus">+</span></summary>
+          <p class="faq-item__body">Yes — that's our primary model. The programme is designed to be accessed through employer L&amp;D budgets and learning allowances. We provide all documentation needed for budget approval: learning objectives, expected outcomes, and proper invoicing.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do I need any technical skills? <span class="plus">+</span></summary>
+          <p class="faq-item__body">None. You'll learn through guided exercises, step-by-step assignments, and peer support. The tools we use (Lovable, Bolt.new, Replit, Claude) are designed for non-technical people. If you can use a spreadsheet, you can vibe build.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What will I actually build? <span class="plus">+</span></summary>
+          <p class="faq-item__body">You work on a real project tied to your own work or business idea — not a generic exercise. Examples include internal dashboards, client portals, onboarding tools, workflow automations, and product prototypes. You leave with something working and deployable.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What's the time commitment? <span class="plus">+</span></summary>
+          <p class="faq-item__body">Around 3–4 hours per week. One live kickoff session at the start, then async learning throughout: weekly modules (~45 min), your peer circle check-in (~20 min), and working on your project (~2 hours). Everything except the kickoff is async.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>How big are cohorts? <span class="plus">+</span></summary>
+          <p class="faq-item__body">We keep cohorts intentionally small. Peer circles are 4–6 people. The full cohort is small enough that you'll recognise every name by week two. We'll share exact numbers when confirming your spot.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>What happens after I apply? <span class="plus">+</span></summary>
+          <p class="faq-item__body">We review your application and reach out within 48 hours to discuss fit, cohort timing, and budget options. There is no obligation to enrol at the application stage. If it's a fit, we'll confirm your spot and send payment details.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Is there a certificate? <span class="plus">+</span></summary>
+          <p class="faq-item__body">Yes. Participants who complete the programme receive a VibeBuildingAcademy certificate of completion — shareable on LinkedIn and with your L&amp;D team. We also believe your finished project is more valuable proof of capability than any certificate.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ────────────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <p class="footer__logo">VibeBuildingAcademy<span class="dot">.</span></p>
+        <p class="footer__tagline">Build What You Never Could Before</p>
+        <p class="footer__email"><a href="mailto:demadera@marcovanhout.com">demadera@marcovanhout.com</a></p>
+        <p class="footer__copy">© 2025 VibeBuildingAcademy. All rights reserved.</p>
+      </div>
+      <nav class="footer__links">
+        <a href="#curriculum">Curriculum</a>
+        <a href="#who">Who it's for</a>
+        <a href="#stories">Stories</a>
+        <a href="#faq">FAQ</a>
+        <a href="#signup-form">Apply</a>
+        <a href="mailto:demadera@marcovanhout.com">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Form submission
+    const form = document.getElementById('apply-form');
+    const success = document.getElementById('form-success');
+    if (form) {
+      form.addEventListener('submit', async e => {
+        e.preventDefault();
+        try {
+          const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+          if (res.ok) { form.style.display = 'none'; success.style.display = 'block'; }
+          else { alert('Something went wrong. Please email demadera@marcovanhout.com directly.'); }
+        } catch { alert('Something went wrong. Please email demadera@marcovanhout.com directly.'); }
+      });
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+
+</body>
+</html>

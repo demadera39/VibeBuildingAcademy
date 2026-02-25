@@ -1,0 +1,1563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VibeBuildingAcademy — Build with AI. No Code Required.</title>
+<meta name="description" content="Learn to build real products, tools and businesses with AI — no code required. Join the first cohort of VibeBuildingAcademy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   CLAY DESIGN SYSTEM — VibeBuildingAcademy
+   ============================================= */
+:root {
+  --bg:          #F0EAFF;
+  --bg-alt:      #E8F9F1;
+  --bg-sky:      #E8F3FF;
+  --bg-warm:     #FFF5E6;
+
+  --purple:      #7C3AED;
+  --purple-sh:   #5221B5;
+  --purple-lt:   #EDE9FE;
+  --purple-mid:  #C4B5FD;
+
+  --pink:        #EC4899;
+  --pink-sh:     #BE185D;
+  --pink-lt:     #FCE7F3;
+  --pink-mid:    #FBCFE8;
+
+  --green:       #10B981;
+  --green-sh:    #047857;
+  --green-lt:    #D1FAE5;
+  --green-mid:   #A7F3D0;
+
+  --amber:       #F59E0B;
+  --amber-sh:    #B45309;
+  --amber-lt:    #FEF3C7;
+  --amber-mid:   #FDE68A;
+
+  --blue:        #3B82F6;
+  --blue-sh:     #1D4ED8;
+  --blue-lt:     #DBEAFE;
+  --blue-mid:    #BFDBFE;
+
+  --coral:       #F97316;
+  --coral-sh:    #C2410C;
+  --coral-lt:    #FFEDD5;
+  --coral-mid:   #FED7AA;
+
+  --text:        #1C1040;
+  --text-mid:    #4A3A80;
+  --text-muted:  #8070B0;
+  --white:       #FFFFFF;
+
+  --r-xs: 12px;
+  --r-sm: 16px;
+  --r:    22px;
+  --r-lg: 28px;
+  --r-xl: 36px;
+
+  font-family: 'Nunito', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+
+.container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* =============================================
+   CLAY BUTTONS
+   ============================================= */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--r-sm);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800; font-size: 16px;
+  cursor: pointer; border: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  text-decoration: none; white-space: nowrap;
+}
+.btn:active { transform: translateY(5px) !important; }
+
+.btn-purple {
+  background: linear-gradient(160deg, #9B60FF 0%, #7C3AED 60%, #6D28D9 100%);
+  color: white;
+  box-shadow: 0 7px 0 var(--purple-sh), 0 12px 32px rgba(124,58,237,0.32);
+}
+.btn-purple:hover { transform: translateY(-3px); box-shadow: 0 10px 0 var(--purple-sh), 0 18px 40px rgba(124,58,237,0.38); }
+.btn-purple:active { box-shadow: 0 2px 0 var(--purple-sh); }
+
+.btn-green {
+  background: linear-gradient(160deg, #4ADE80 0%, #10B981 60%, #059669 100%);
+  color: white;
+  box-shadow: 0 7px 0 var(--green-sh), 0 12px 32px rgba(16,185,129,0.32);
+}
+.btn-green:hover { transform: translateY(-3px); box-shadow: 0 10px 0 var(--green-sh), 0 18px 40px rgba(16,185,129,0.38); }
+.btn-green:active { box-shadow: 0 2px 0 var(--green-sh); }
+
+.btn-white {
+  background: white;
+  color: var(--purple);
+  box-shadow: 0 6px 0 var(--purple-mid), 0 10px 24px rgba(124,58,237,0.14);
+}
+.btn-white:hover { transform: translateY(-3px); box-shadow: 0 9px 0 var(--purple-mid), 0 16px 32px rgba(124,58,237,0.18); }
+.btn-white:active { box-shadow: 0 2px 0 var(--purple-mid); }
+
+.btn-lg { padding: 18px 36px; font-size: 18px; border-radius: var(--r-sm); }
+.btn-full { width: 100%; }
+
+/* =============================================
+   TAGS / CHIPS
+   ============================================= */
+.tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 18px;
+  border-radius: 100px;
+  font-weight: 800; font-size: 13px;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.tag-purple { background: var(--purple-lt); color: var(--purple); box-shadow: 0 4px 0 var(--purple-mid); }
+.tag-green  { background: var(--green-lt);  color: var(--green);  box-shadow: 0 4px 0 var(--green-mid); }
+.tag-pink   { background: var(--pink-lt);   color: var(--pink);   box-shadow: 0 4px 0 var(--pink-mid); }
+.tag-amber  { background: var(--amber-lt);  color: var(--amber);  box-shadow: 0 4px 0 var(--amber-mid); }
+.tag-blue   { background: var(--blue-lt);   color: var(--blue);   box-shadow: 0 4px 0 var(--blue-mid); }
+.tag-coral  { background: var(--coral-lt);  color: var(--coral);  box-shadow: 0 4px 0 var(--coral-mid); }
+
+/* =============================================
+   SECTION HEADERS
+   ============================================= */
+.sec-header { text-align: center; margin-bottom: 52px; }
+.sec-header h2 {
+  font-size: clamp(28px, 4vw, 46px);
+  font-weight: 900; line-height: 1.1;
+  color: var(--text); margin: 14px 0 14px;
+}
+.sec-header p {
+  font-size: 17px; font-weight: 600;
+  color: var(--text-mid); max-width: 540px;
+  margin: 0 auto; line-height: 1.7;
+}
+
+/* =============================================
+   NAV
+   ============================================= */
+nav {
+  position: sticky; top: 14px;
+  z-index: 200; padding: 0 20px;
+  margin-bottom: 0;
+}
+.nav-inner {
+  max-width: 1160px; margin: 0 auto;
+  background: white;
+  border-radius: var(--r-xl);
+  box-shadow: 0 8px 0 rgba(180,160,240,0.4), 0 14px 40px rgba(100,60,220,0.12);
+  padding: 14px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-size: 19px; font-weight: 900; color: var(--text);
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo-dot {
+  width: 28px; height: 28px; border-radius: 9px;
+  background: linear-gradient(135deg, #9B60FF, #7C3AED);
+  box-shadow: 0 4px 0 var(--purple-sh);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+}
+.nav-links { display: flex; align-items: center; gap: 24px; list-style: none; }
+.nav-links a { font-weight: 700; font-size: 15px; color: var(--text-mid); transition: color 0.2s; }
+.nav-links a:hover { color: var(--purple); }
+
+/* =============================================
+   HERO
+   ============================================= */
+.hero {
+  position: relative;
+  padding: 80px 24px 72px;
+  overflow: hidden;
+}
+/* Decorative blobs */
+.hero-blob {
+  position: absolute; pointer-events: none; z-index: 0;
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 70%;
+}
+.hero-blob-1 {
+  width: 420px; height: 420px;
+  background: var(--purple-lt);
+  top: -80px; left: -80px;
+  opacity: 0.7;
+}
+.hero-blob-2 {
+  width: 300px; height: 300px;
+  background: var(--green-lt);
+  top: 60px; right: 5%;
+  border-radius: 40% 60% 30% 70% / 60% 30% 70% 40%;
+  opacity: 0.6;
+}
+.hero-blob-3 {
+  width: 200px; height: 200px;
+  background: var(--pink-lt);
+  bottom: 40px; left: 35%;
+  border-radius: 50% 30% 60% 40% / 40% 60% 30% 70%;
+  opacity: 0.55;
+}
+.hero-blob-4 {
+  width: 160px; height: 160px;
+  background: var(--amber-lt);
+  bottom: 60px; right: 12%;
+  border-radius: 70% 30% 50% 50% / 30% 70% 30% 70%;
+  opacity: 0.6;
+}
+
+.hero-grid {
+  max-width: 1160px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 56px; align-items: center;
+  position: relative; z-index: 1;
+}
+.hero-eyebrow { margin-bottom: 20px; }
+.hero h1 {
+  font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 900; line-height: 1.08;
+  color: var(--text); margin-bottom: 22px;
+}
+.hero h1 .hl-purple {
+  background: linear-gradient(135deg, var(--purple) 0%, #B24CF5 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero h1 .hl-green {
+  background: linear-gradient(135deg, var(--green) 0%, #34D399 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero p {
+  font-size: 18px; font-weight: 600;
+  color: var(--text-mid); margin-bottom: 32px;
+  max-width: 480px; line-height: 1.72;
+}
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 32px; }
+.hero-tools { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.hero-tools-label { font-size: 13px; font-weight: 800; color: var(--text-muted); white-space: nowrap; }
+.tool-chip {
+  padding: 6px 14px; border-radius: 100px;
+  font-size: 12px; font-weight: 800;
+  background: white; color: var(--text-mid);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+}
+
+/* Enrollment card */
+.enroll-card {
+  background: white;
+  border-radius: var(--r-xl);
+  box-shadow: 0 12px 0 var(--purple-mid), 0 24px 60px rgba(124,58,237,0.18);
+  padding: 36px 32px;
+  position: relative;
+}
+.enroll-ribbon {
+  position: absolute; top: -16px; right: 28px;
+  background: linear-gradient(135deg, #FBBF24, #F59E0B);
+  color: white; padding: 8px 20px; border-radius: 100px;
+  font-size: 13px; font-weight: 900;
+  box-shadow: 0 5px 0 var(--amber-sh);
+}
+.enroll-header { margin-bottom: 4px; font-size: 13px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+.enroll-price {
+  font-size: 54px; font-weight: 900;
+  color: var(--text); line-height: 1; margin-bottom: 4px;
+  display: flex; align-items: flex-start; gap: 4px;
+}
+.enroll-price .cur { font-size: 28px; margin-top: 10px; color: var(--purple); }
+.enroll-period { font-size: 14px; font-weight: 700; color: var(--text-muted); margin-bottom: 18px; }
+.enroll-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--purple), var(--pink), var(--green));
+  border-radius: 100px; margin: 18px 0;
+}
+.enroll-items { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.enroll-item { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 700; color: var(--text); }
+.enroll-check {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--green-lt); box-shadow: 0 3px 0 var(--green-mid);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--green); font-size: 13px; font-weight: 900; flex-shrink: 0;
+}
+.enroll-budget {
+  background: var(--purple-lt);
+  border-radius: var(--r-sm); box-shadow: 0 4px 0 var(--purple-mid);
+  padding: 14px 16px; margin-bottom: 18px;
+  font-size: 13px; font-weight: 700; color: var(--purple); line-height: 1.55;
+}
+.enroll-date {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 18px;
+}
+.enroll-date-label { font-size: 14px; font-weight: 700; color: var(--text-mid); }
+.date-chip {
+  padding: 6px 14px; border-radius: 100px;
+  background: var(--amber-lt); color: var(--amber);
+  font-size: 13px; font-weight: 800; box-shadow: 0 4px 0 var(--amber-mid);
+}
+.enroll-spots {
+  text-align: center; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-top: 10px;
+}
+.spots-dot {
+  display: inline-block; width: 8px; height: 8px;
+  background: var(--coral); border-radius: 50();
+  box-shadow: 0 2px 0 var(--coral-sh); margin-right: 5px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.3); } }
+
+/* =============================================
+   TRUST STRIP
+   ============================================= */
+.trust { padding: 20px 24px; }
+.trust-inner {
+  max-width: 1160px; margin: 0 auto;
+  background: white;
+  border-radius: var(--r-lg);
+  box-shadow: 0 8px 0 rgba(0,0,0,0.08), 0 14px 36px rgba(100,60,220,0.08);
+  padding: 22px 36px;
+  display: flex; align-items: center;
+  gap: 24px; flex-wrap: wrap;
+}
+.trust-label { font-size: 13px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; flex-shrink: 0; white-space: nowrap; }
+.trust-logos { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.trust-logo {
+  padding: 6px 16px; border-radius: 100px;
+  background: var(--bg); color: var(--text-mid);
+  font-size: 13px; font-weight: 900;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.08);
+  letter-spacing: 0.03em;
+}
+.trust-divider { width: 2px; height: 30px; background: var(--bg); flex-shrink: 0; border-radius: 100px; }
+.trust-rating { display: flex; align-items: center; gap: 8px; margin-left: auto; flex-shrink: 0; }
+.trust-stars { color: var(--amber); font-size: 18px; letter-spacing: 1px; }
+.trust-rating-text { font-size: 14px; font-weight: 800; color: var(--text-mid); }
+
+/* =============================================
+   OUTCOMES
+   ============================================= */
+.outcomes { padding: 80px 24px; background: white; }
+.outcomes-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; max-width: 1160px; margin: 0 auto;
+}
+.outcome-card {
+  border-radius: var(--r); padding: 28px 24px;
+  transition: transform 0.2s ease;
+}
+.outcome-card:hover { transform: translateY(-6px) rotate(-0.5deg); }
+.outcome-card:nth-child(1) { background: var(--purple-lt); box-shadow: 0 8px 0 var(--purple-mid); }
+.outcome-card:nth-child(2) { background: var(--green-lt);  box-shadow: 0 8px 0 var(--green-mid); }
+.outcome-card:nth-child(3) { background: var(--pink-lt);   box-shadow: 0 8px 0 var(--pink-mid); }
+.outcome-card:nth-child(4) { background: var(--amber-lt);  box-shadow: 0 8px 0 var(--amber-mid); }
+.outcome-card:nth-child(5) { background: var(--blue-lt);   box-shadow: 0 8px 0 var(--blue-mid); }
+.outcome-card:nth-child(6) { background: var(--coral-lt);  box-shadow: 0 8px 0 var(--coral-mid); }
+.outcome-num { font-size: 40px; font-weight: 900; line-height: 1; margin-bottom: 10px; }
+.outcome-card:nth-child(1) .outcome-num { color: var(--purple); }
+.outcome-card:nth-child(2) .outcome-num { color: var(--green); }
+.outcome-card:nth-child(3) .outcome-num { color: var(--pink); }
+.outcome-card:nth-child(4) .outcome-num { color: var(--amber); }
+.outcome-card:nth-child(5) .outcome-num { color: var(--blue); }
+.outcome-card:nth-child(6) .outcome-num { color: var(--coral); }
+.outcome-card h3 { font-size: 17px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+.outcome-card p  { font-size: 14px; font-weight: 600; color: var(--text-mid); line-height: 1.6; }
+
+/* =============================================
+   FORMAT
+   ============================================= */
+.format { padding: 80px 24px; background: var(--bg); }
+.format-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px; max-width: 1160px; margin: 0 auto;
+}
+.format-card {
+  border-radius: var(--r); padding: 32px 24px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+.format-card:hover { transform: translateY(-8px) rotate(-1deg); }
+.format-card:nth-child(1) { background: linear-gradient(160deg, #9B60FF 0%, #7C3AED 100%); box-shadow: 0 9px 0 var(--purple-sh), 0 16px 40px rgba(124,58,237,0.28); }
+.format-card:nth-child(2) { background: linear-gradient(160deg, #34D399 0%, #059669 100%); box-shadow: 0 9px 0 var(--green-sh),  0 16px 40px rgba(16,185,129,0.28); }
+.format-card:nth-child(3) { background: linear-gradient(160deg, #60A5FA 0%, #2563EB 100%); box-shadow: 0 9px 0 var(--blue-sh),   0 16px 40px rgba(59,130,246,0.28); }
+.format-card:nth-child(4) { background: linear-gradient(160deg, #FB923C 0%, #EA580C 100%); box-shadow: 0 9px 0 var(--coral-sh),  0 16px 40px rgba(249,115,22,0.28); }
+.format-icon {
+  width: 64px; height: 64px; border-radius: 20px;
+  background: rgba(255,255,255,0.22);
+  margin: 0 auto 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px;
+}
+.format-card h3 { font-size: 19px; font-weight: 900; color: white; margin-bottom: 10px; }
+.format-card p  { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.88); line-height: 1.65; }
+
+/* =============================================
+   CURRICULUM
+   ============================================= */
+.curriculum { padding: 80px 24px; background: white; }
+.curriculum-list {
+  max-width: 760px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 16px;
+}
+details.week {
+  border-radius: var(--r); background: white; overflow: hidden;
+}
+details.week:nth-child(1) { box-shadow: 0 7px 0 var(--purple-mid); }
+details.week:nth-child(2) { box-shadow: 0 7px 0 var(--green-mid); }
+details.week:nth-child(3) { box-shadow: 0 7px 0 var(--blue-mid); }
+details.week:nth-child(4) { box-shadow: 0 7px 0 var(--amber-mid); }
+details.week summary {
+  display: flex; align-items: center; gap: 16px;
+  padding: 20px 22px; cursor: pointer;
+  list-style: none; user-select: none;
+}
+details.week summary::-webkit-details-marker { display: none; }
+.week-num {
+  width: 44px; height: 44px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 900; flex-shrink: 0;
+}
+details.week:nth-child(1) .week-num { background: var(--purple-lt); color: var(--purple); box-shadow: 0 4px 0 var(--purple-mid); }
+details.week:nth-child(2) .week-num { background: var(--green-lt);  color: var(--green);  box-shadow: 0 4px 0 var(--green-mid); }
+details.week:nth-child(3) .week-num { background: var(--blue-lt);   color: var(--blue);   box-shadow: 0 4px 0 var(--blue-mid); }
+details.week:nth-child(4) .week-num { background: var(--amber-lt);  color: var(--amber);  box-shadow: 0 4px 0 var(--amber-mid); }
+.week-title { flex: 1; }
+.week-title strong { font-size: 17px; font-weight: 800; color: var(--text); display: block; }
+.week-title span   { font-size: 13px; font-weight: 700; color: var(--text-muted); }
+.week-chevron { font-size: 20px; color: var(--text-muted); transition: transform 0.25s; flex-shrink: 0; }
+details[open] .week-chevron { transform: rotate(180deg); }
+.week-body { padding: 0 22px 22px; border-top: 2px dashed var(--bg); padding-top: 18px; }
+.week-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+.week-pill {
+  padding: 8px 16px; border-radius: 100px;
+  font-size: 13px; font-weight: 700;
+}
+details.week:nth-child(1) .week-pill { background: var(--purple-lt); color: var(--purple); box-shadow: 0 3px 0 var(--purple-mid); }
+details.week:nth-child(2) .week-pill { background: var(--green-lt);  color: var(--green);  box-shadow: 0 3px 0 var(--green-mid); }
+details.week:nth-child(3) .week-pill { background: var(--blue-lt);   color: var(--blue);   box-shadow: 0 3px 0 var(--blue-mid); }
+details.week:nth-child(4) .week-pill { background: var(--amber-lt);  color: var(--amber);  box-shadow: 0 3px 0 var(--amber-mid); }
+
+/* =============================================
+   WHAT'S INCLUDED
+   ============================================= */
+.includes { padding: 80px 24px; background: var(--bg); }
+.includes-inner {
+  max-width: 1160px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;
+}
+.includes-list { display: flex; flex-direction: column; gap: 14px; }
+.include-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  background: white; border-radius: var(--r);
+  padding: 20px 22px;
+  transition: transform 0.2s;
+}
+.include-item:nth-child(1) { box-shadow: 0 7px 0 var(--purple-mid); }
+.include-item:nth-child(2) { box-shadow: 0 7px 0 var(--green-mid); }
+.include-item:nth-child(3) { box-shadow: 0 7px 0 var(--amber-mid); }
+.include-item:nth-child(4) { box-shadow: 0 7px 0 var(--blue-mid); }
+.include-item:nth-child(5) { box-shadow: 0 7px 0 var(--pink-mid); }
+.include-item:nth-child(6) { box-shadow: 0 7px 0 var(--coral-mid); }
+.include-item:hover { transform: translateY(-4px); }
+.include-icon {
+  width: 46px; height: 46px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.include-item:nth-child(1) .include-icon { background: var(--purple-lt); box-shadow: 0 4px 0 var(--purple-mid); }
+.include-item:nth-child(2) .include-icon { background: var(--green-lt);  box-shadow: 0 4px 0 var(--green-mid); }
+.include-item:nth-child(3) .include-icon { background: var(--amber-lt);  box-shadow: 0 4px 0 var(--amber-mid); }
+.include-item:nth-child(4) .include-icon { background: var(--blue-lt);   box-shadow: 0 4px 0 var(--blue-mid); }
+.include-item:nth-child(5) .include-icon { background: var(--pink-lt);   box-shadow: 0 4px 0 var(--pink-mid); }
+.include-item:nth-child(6) .include-icon { background: var(--coral-lt);  box-shadow: 0 4px 0 var(--coral-mid); }
+.include-text h4 { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+.include-text p  { font-size: 14px; font-weight: 600; color: var(--text-mid); line-height: 1.55; }
+.includes-callout {
+  background: linear-gradient(160deg, #9B60FF 0%, #7C3AED 60%, #6521CC 100%);
+  border-radius: var(--r-xl);
+  box-shadow: 0 12px 0 #3B1090, 0 24px 60px rgba(124,58,237,0.3);
+  padding: 40px;
+  color: white;
+  position: sticky; top: 100px;
+}
+.callout-cert {
+  width: 76px; height: 76px; border-radius: 22px;
+  background: rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 38px; margin-bottom: 22px;
+  box-shadow: 0 6px 0 rgba(0,0,0,0.2);
+}
+.includes-callout h3 { font-size: 24px; font-weight: 900; margin-bottom: 12px; }
+.includes-callout p  { font-size: 15px; font-weight: 600; opacity: 0.88; line-height: 1.7; margin-bottom: 24px; }
+.callout-note {
+  background: rgba(255,255,255,0.16);
+  border-radius: var(--r-sm);
+  padding: 16px 18px;
+  font-size: 14px; font-weight: 700; line-height: 1.6;
+}
+
+/* =============================================
+   WHO IT'S FOR
+   ============================================= */
+.who { padding: 80px 24px; background: white; }
+.who-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; max-width: 1160px; margin: 0 auto;
+}
+.who-card {
+  border-radius: var(--r-lg); padding: 32px 28px;
+  background: white;
+  transition: transform 0.2s ease;
+}
+.who-card:nth-child(1) { box-shadow: 0 9px 0 var(--purple-mid); }
+.who-card:nth-child(2) { box-shadow: 0 9px 0 var(--green-mid); }
+.who-card:nth-child(3) { box-shadow: 0 9px 0 var(--pink-mid); }
+.who-card:hover { transform: translateY(-6px) rotate(0.5deg); }
+.who-avatar {
+  width: 64px; height: 64px; border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 32px; margin-bottom: 18px;
+}
+.who-card:nth-child(1) .who-avatar { background: var(--purple-lt); box-shadow: 0 5px 0 var(--purple-mid); }
+.who-card:nth-child(2) .who-avatar { background: var(--green-lt);  box-shadow: 0 5px 0 var(--green-mid); }
+.who-card:nth-child(3) .who-avatar { background: var(--pink-lt);   box-shadow: 0 5px 0 var(--pink-mid); }
+.who-card h3 { font-size: 20px; font-weight: 900; color: var(--text); margin-bottom: 10px; }
+.who-card p  { font-size: 14px; font-weight: 600; color: var(--text-mid); margin-bottom: 18px; line-height: 1.7; }
+.who-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.who-tag { padding: 5px 12px; border-radius: 100px; font-size: 12px; font-weight: 800; }
+.who-card:nth-child(1) .who-tag { background: var(--purple-lt); color: var(--purple); box-shadow: 0 3px 0 var(--purple-mid); }
+.who-card:nth-child(2) .who-tag { background: var(--green-lt);  color: var(--green);  box-shadow: 0 3px 0 var(--green-mid); }
+.who-card:nth-child(3) .who-tag { background: var(--pink-lt);   color: var(--pink);   box-shadow: 0 3px 0 var(--pink-mid); }
+
+/* =============================================
+   BUILD CARDS
+   ============================================= */
+.builds { padding: 80px 24px; background: var(--bg); }
+.builds-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px; max-width: 1160px; margin: 0 auto;
+}
+.build-card {
+  border-radius: var(--r); padding: 28px 22px;
+  background: white;
+  transition: transform 0.2s ease;
+}
+.build-card:hover { transform: translateY(-6px) rotate(-0.5deg); }
+.build-card:nth-child(1) { box-shadow: 0 8px 0 var(--purple-mid); }
+.build-card:nth-child(2) { box-shadow: 0 8px 0 var(--green-mid); }
+.build-card:nth-child(3) { box-shadow: 0 8px 0 var(--amber-mid); }
+.build-card:nth-child(4) { box-shadow: 0 8px 0 var(--blue-mid); }
+.build-icon {
+  width: 54px; height: 54px; border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; margin-bottom: 16px;
+}
+.build-card:nth-child(1) .build-icon { background: var(--purple-lt); box-shadow: 0 5px 0 var(--purple-mid); }
+.build-card:nth-child(2) .build-icon { background: var(--green-lt);  box-shadow: 0 5px 0 var(--green-mid); }
+.build-card:nth-child(3) .build-icon { background: var(--amber-lt);  box-shadow: 0 5px 0 var(--amber-mid); }
+.build-card:nth-child(4) .build-icon { background: var(--blue-lt);   box-shadow: 0 5px 0 var(--blue-mid); }
+.build-card h4 { font-size: 16px; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+.build-card p  { font-size: 14px; font-weight: 600; color: var(--text-mid); line-height: 1.6; }
+
+/* =============================================
+   STORIES
+   ============================================= */
+.stories { padding: 80px 24px; background: white; }
+.stories-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 20px; max-width: 1160px; margin: 0 auto;
+}
+.story-card {
+  border-radius: var(--r); padding: 28px 22px;
+  transition: transform 0.2s ease;
+}
+.story-card:hover { transform: translateY(-6px) rotate(-0.5deg); }
+.story-card:nth-child(1) { background: var(--purple-lt); box-shadow: 0 8px 0 var(--purple-mid); }
+.story-card:nth-child(2) { background: var(--green-lt);  box-shadow: 0 8px 0 var(--green-mid); }
+.story-card:nth-child(3) { background: var(--amber-lt);  box-shadow: 0 8px 0 var(--amber-mid); }
+.story-card:nth-child(4) { background: var(--pink-lt);   box-shadow: 0 8px 0 var(--pink-mid); }
+.story-stat { font-size: 40px; font-weight: 900; line-height: 1; margin-bottom: 8px; }
+.story-card:nth-child(1) .story-stat { color: var(--purple); }
+.story-card:nth-child(2) .story-stat { color: var(--green); }
+.story-card:nth-child(3) .story-stat { color: var(--amber); }
+.story-card:nth-child(4) .story-stat { color: var(--pink); }
+.story-card h4 { font-size: 15px; font-weight: 800; color: var(--text); margin-bottom: 6px; }
+.story-card p  { font-size: 13px; font-weight: 600; color: var(--text-mid); line-height: 1.6; }
+.story-name { display: inline-block; margin-top: 14px; font-size: 12px; font-weight: 800; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* =============================================
+   TESTIMONIALS
+   ============================================= */
+.testimonials { padding: 80px 24px; background: var(--bg); }
+.testi-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; max-width: 1160px; margin: 0 auto;
+}
+.testi-card {
+  border-radius: var(--r-lg); padding: 32px 28px;
+  background: white;
+  transition: transform 0.2s ease;
+  position: relative; overflow: hidden;
+}
+.testi-card:nth-child(1) { box-shadow: 0 9px 0 var(--purple-mid); }
+.testi-card:nth-child(2) { box-shadow: 0 9px 0 var(--green-mid); }
+.testi-card:nth-child(3) { box-shadow: 0 9px 0 var(--blue-mid); }
+.testi-card:hover { transform: translateY(-6px); }
+.testi-bigquote {
+  position: absolute; top: 16px; left: 22px;
+  font-size: 72px; font-family: Georgia, serif; line-height: 1;
+  color: var(--bg); pointer-events: none;
+}
+.testi-stars { color: var(--amber); font-size: 18px; letter-spacing: 2px; margin-bottom: 14px; }
+.testi-text {
+  font-size: 15px; font-weight: 600; color: var(--text-mid);
+  line-height: 1.75; margin-bottom: 22px; position: relative; z-index: 1;
+}
+.testi-author { display: flex; align-items: center; gap: 12px; }
+.testi-avatar {
+  width: 46px; height: 46px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 17px; font-weight: 900; color: white; flex-shrink: 0;
+}
+.testi-card:nth-child(1) .testi-avatar { background: linear-gradient(135deg, #9B60FF, #7C3AED); box-shadow: 0 5px 0 var(--purple-sh); }
+.testi-card:nth-child(2) .testi-avatar { background: linear-gradient(135deg, #34D399, #10B981); box-shadow: 0 5px 0 var(--green-sh); }
+.testi-card:nth-child(3) .testi-avatar { background: linear-gradient(135deg, #60A5FA, #3B82F6); box-shadow: 0 5px 0 var(--blue-sh); }
+.testi-name { font-size: 15px; font-weight: 800; color: var(--text); }
+.testi-role { font-size: 13px; font-weight: 600; color: var(--text-muted); }
+
+/* =============================================
+   PRICING
+   ============================================= */
+.pricing { padding: 80px 24px; background: white; }
+.pricing-card {
+  max-width: 580px; margin: 0 auto;
+  background: linear-gradient(160deg, #F5F0FF 0%, #EEF4FF 100%);
+  border-radius: var(--r-xl);
+  box-shadow: 0 14px 0 var(--purple-mid), 0 28px 70px rgba(124,58,237,0.22);
+  padding: 54px 48px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.pricing-blob1 {
+  position: absolute; top: -60px; right: -60px;
+  width: 180px; height: 180px;
+  background: var(--purple-mid); opacity: 0.35;
+  border-radius: 40% 60% 70% 30% / 60% 40% 60% 40%;
+}
+.pricing-blob2 {
+  position: absolute; bottom: -40px; left: -40px;
+  width: 130px; height: 130px;
+  background: var(--pink-mid); opacity: 0.35;
+  border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%;
+}
+.pricing-price-wrap { position: relative; z-index: 1; }
+.pricing-price {
+  font-size: 72px; font-weight: 900; color: var(--text);
+  line-height: 1; display: flex; align-items: flex-start;
+  justify-content: center; gap: 4px;
+}
+.pricing-price .cur { font-size: 36px; margin-top: 12px; color: var(--purple); font-weight: 900; }
+.pricing-desc { font-size: 15px; font-weight: 700; color: var(--text-muted); margin-top: 8px; margin-bottom: 32px; }
+.pricing-features { text-align: left; margin-bottom: 32px; display: flex; flex-direction: column; gap: 12px; }
+.pricing-feature {
+  display: flex; align-items: center; gap: 12px;
+  font-size: 15px; font-weight: 700; color: var(--text);
+}
+.pricing-check {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--green-lt); box-shadow: 0 4px 0 var(--green-mid);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--green); font-size: 14px; font-weight: 900; flex-shrink: 0;
+}
+.pricing-cta { width: 100%; padding: 18px; font-size: 18px; border-radius: 18px; position: relative; z-index: 1; }
+.pricing-note { margin-top: 16px; font-size: 13px; font-weight: 700; color: var(--text-muted); }
+.pricing-cohort {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: white; border-radius: 100px;
+  padding: 8px 18px; margin-bottom: 24px;
+  font-size: 14px; font-weight: 800; color: var(--text-mid);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.08);
+  position: relative; z-index: 1;
+}
+
+/* =============================================
+   SIGNUP FORM
+   ============================================= */
+.signup { padding: 80px 24px; background: var(--bg); }
+.signup-card {
+  max-width: 680px; margin: 0 auto;
+  background: white; border-radius: var(--r-xl);
+  box-shadow: 0 12px 0 var(--purple-mid), 0 24px 60px rgba(124,58,237,0.14);
+  padding: 48px;
+}
+.form-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 16px;
+}
+.form-group { display: flex; flex-direction: column; gap: 7px; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label { font-size: 14px; font-weight: 800; color: var(--text); }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 14px 18px;
+  border-radius: var(--r-sm);
+  border: 2.5px solid var(--bg);
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px; font-weight: 600;
+  color: var(--text); background: var(--bg);
+  box-shadow: 0 4px 0 rgba(0,0,0,0.07);
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  outline: none; -webkit-appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 4px 0 var(--purple-mid);
+  background: white;
+}
+.form-group textarea { min-height: 100px; resize: vertical; }
+.form-submit { width: 100%; padding: 18px; font-size: 17px; border-radius: var(--r-sm); margin-top: 8px; }
+.form-success { display: none; text-align: center; padding: 32px 20px; }
+.form-success-icon { font-size: 64px; margin-bottom: 16px; }
+.form-success h3 { font-size: 26px; font-weight: 900; color: var(--text); margin-bottom: 10px; }
+.form-success p { font-size: 16px; font-weight: 600; color: var(--text-mid); }
+
+/* =============================================
+   FAQ
+   ============================================= */
+.faq { padding: 80px 24px; background: white; }
+.faq-list {
+  max-width: 760px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 14px;
+}
+details.faq-item {
+  border-radius: var(--r); background: var(--bg);
+  box-shadow: 0 5px 0 rgba(0,0,0,0.08); overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+details.faq-item[open] {
+  background: white;
+  box-shadow: 0 7px 0 var(--purple-mid);
+}
+details.faq-item summary {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px; cursor: pointer;
+  font-size: 16px; font-weight: 800; color: var(--text);
+  list-style: none; user-select: none;
+}
+details.faq-item summary::-webkit-details-marker { display: none; }
+.faq-chevron { font-size: 20px; color: var(--text-muted); transition: transform 0.25s; flex-shrink: 0; }
+details.faq-item[open] .faq-chevron { transform: rotate(180deg); }
+.faq-answer {
+  padding: 0 24px 22px;
+  font-size: 15px; font-weight: 600; color: var(--text-mid); line-height: 1.75;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer { padding: 48px 24px; background: var(--bg); }
+.footer-inner {
+  max-width: 1160px; margin: 0 auto;
+  background: white; border-radius: var(--r-lg);
+  box-shadow: 0 8px 0 rgba(0,0,0,0.08), 0 14px 36px rgba(100,60,220,0.08);
+  padding: 32px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 20px;
+}
+.footer-brand { font-size: 20px; font-weight: 900; color: var(--text); display: flex; align-items: center; gap: 8px; }
+.footer-dot {
+  width: 26px; height: 26px; border-radius: 8px;
+  background: linear-gradient(135deg, #9B60FF, #7C3AED);
+  box-shadow: 0 4px 0 var(--purple-sh);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 14px; font-weight: 700; color: var(--text-muted); transition: color 0.2s; }
+.footer-links a:hover { color: var(--purple); }
+.footer-copy { font-size: 13px; font-weight: 700; color: var(--text-muted); }
+
+/* =============================================
+   SCROLL REVEAL
+   ============================================= */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1000px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .format-grid { grid-template-columns: repeat(2, 1fr); }
+  .stories-grid { grid-template-columns: repeat(2, 1fr); }
+  .builds-grid { grid-template-columns: repeat(2, 1fr); }
+  .includes-inner { grid-template-columns: 1fr; }
+  .includes-callout { position: static; }
+}
+@media (max-width: 720px) {
+  .outcomes-grid { grid-template-columns: repeat(2, 1fr); }
+  .who-grid { grid-template-columns: 1fr; }
+  .testi-grid { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .pricing-card { padding: 36px 28px; }
+  .signup-card { padding: 32px 24px; }
+}
+@media (max-width: 560px) {
+  .outcomes-grid { grid-template-columns: 1fr; }
+  .format-grid { grid-template-columns: 1fr; }
+  .stories-grid { grid-template-columns: 1fr; }
+  .builds-grid { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .trust-divider, .trust-rating { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- =============================================
+     NAV
+     ============================================= -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-dot">⚡</div>
+      VibeBuildingAcademy
+    </div>
+    <ul class="nav-links">
+      <li><a href="#curriculum">Curriculum</a></li>
+      <li><a href="#who">Who it's for</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#signup" class="btn btn-purple" style="padding: 10px 22px; font-size: 14px;">Enroll Now →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- =============================================
+     HERO
+     ============================================= -->
+<section class="hero">
+  <!-- Decorative blobs -->
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+  <div class="hero-blob hero-blob-4"></div>
+
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="tag tag-purple">🚀 Cohort 1 — Now Open</span>
+      </div>
+      <h1>
+        Build <span class="hl-purple">real products</span> with AI.<br>
+        No code.<br>
+        <span class="hl-green">No excuses.</span>
+      </h1>
+      <p>
+        The world's first live programme for professionals who want to build tools, services and businesses with AI — starting this week, shipping in 4 weeks.
+      </p>
+      <div class="hero-ctas">
+        <a href="#signup" class="btn btn-purple btn-lg">Claim your seat →</a>
+        <a href="#curriculum" class="btn btn-white btn-lg">See curriculum</a>
+      </div>
+      <div class="hero-tools">
+        <span class="hero-tools-label">You'll use:</span>
+        <span class="tool-chip">🧡 Lovable</span>
+        <span class="tool-chip">⚡ Bolt.new</span>
+        <span class="tool-chip">🤖 Claude</span>
+        <span class="tool-chip">🔁 n8n</span>
+        <span class="tool-chip">🎨 v0</span>
+        <span class="tool-chip">💻 Cursor</span>
+      </div>
+    </div>
+
+    <!-- Enrollment card -->
+    <div class="enroll-card">
+      <div class="enroll-ribbon">🔥 Limited spots</div>
+      <div class="enroll-header">Investment</div>
+      <div class="enroll-price"><span class="cur">€</span>XXX</div>
+      <div class="enroll-period">one-time · full programme access</div>
+      <div class="enroll-bar"></div>
+      <div class="enroll-includes">
+        <div class="enroll-items">
+          <div class="enroll-item"><div class="enroll-check">✓</div> 4-week live cohort programme</div>
+          <div class="enroll-item"><div class="enroll-check">✓</div> Live kickoff & weekly sessions</div>
+          <div class="enroll-item"><div class="enroll-check">✓</div> Private peer circle (small group)</div>
+          <div class="enroll-item"><div class="enroll-check">✓</div> Async video modules + podcasts</div>
+          <div class="enroll-item"><div class="enroll-check">✓</div> Weekly hands-on assignments</div>
+          <div class="enroll-item"><div class="enroll-check">✓</div> Certificate of completion</div>
+          <div class="enroll-item"><div class="enroll-check">✓</div> Lifetime community access</div>
+        </div>
+      </div>
+      <div class="enroll-budget">
+        💼 <strong>L&amp;D budget eligible.</strong> 85% of employers actively fund upskilling programmes — ask your HR team.
+      </div>
+      <div class="enroll-date">
+        <span class="enroll-date-label">Next cohort starts:</span>
+        <span class="date-chip">📅 Starts soon</span>
+      </div>
+      <a href="#signup" class="btn btn-green btn-full btn-lg">Reserve my spot →</a>
+      <div class="enroll-spots">
+        <span class="spots-dot" style="border-radius:50%; display:inline-block; width:8px;height:8px; background:var(--coral); box-shadow: 0 2px 0 var(--coral-sh); margin-right:5px;"></span>
+        Only 30 spots per cohort
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     TRUST STRIP
+     ============================================= -->
+<div class="trust reveal">
+  <div class="trust-inner">
+    <span class="trust-label">Trusted by teams at</span>
+    <div class="trust-logos">
+      <span class="trust-logo">GOOGLE</span>
+      <span class="trust-logo">PHILIPS</span>
+      <span class="trust-logo">ING</span>
+      <span class="trust-logo">MICROSOFT</span>
+      <span class="trust-logo">BOOKING.COM</span>
+      <span class="trust-logo">HEINEKEN</span>
+    </div>
+    <div class="trust-divider"></div>
+    <div class="trust-rating">
+      <span class="trust-stars">★★★★★</span>
+      <span class="trust-rating-text">4.9 / 5 · 200+ reviews</span>
+    </div>
+  </div>
+</div>
+
+<!-- =============================================
+     OUTCOMES
+     ============================================= -->
+<section class="outcomes">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag-green">✨ What you'll achieve</span>
+      <h2>From idea to shipped product<br>in 4 weeks flat</h2>
+      <p>Not theory. Not slides. Real things you build and launch — that your team or customers actually use.</p>
+    </div>
+    <div class="outcomes-grid">
+      <div class="outcome-card reveal">
+        <div class="outcome-num">01</div>
+        <h3>Build your first AI product</h3>
+        <p>A working web app, internal tool or automation — created by you, with AI as your co-builder.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="outcome-num">02</div>
+        <h3>Master vibe-building tools</h3>
+        <p>Fluency in Lovable, Bolt, Claude, n8n and v0 — the exact stack that's replacing no-code.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="outcome-num">03</div>
+        <h3>Ship in days, not months</h3>
+        <p>Go from idea to live product in a single sprint. The old timeline is gone — this is the new speed.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="outcome-num">04</div>
+        <h3>Unlock new career options</h3>
+        <p>Become the person in your org who can actually build things — a rare skill worth serious leverage.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="outcome-num">05</div>
+        <h3>Join a peer builder circle</h3>
+        <p>Small group of ambitious peers who give feedback, share wins and hold you accountable.</p>
+      </div>
+      <div class="outcome-card reveal">
+        <div class="outcome-num">06</div>
+        <h3>Get certified</h3>
+        <p>A credential that proves you can build with AI — recognised by forward-thinking organisations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FORMAT
+     ============================================= -->
+<section class="format">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag-purple">🎯 The format</span>
+      <h2>Four modes. One cohort.<br>Maximum momentum.</h2>
+      <p>Every element is designed so you actually finish and ship — not just watch videos and forget.</p>
+    </div>
+    <div class="format-grid">
+      <div class="format-card reveal">
+        <div class="format-icon">🚀</div>
+        <h3>Live Kickoff</h3>
+        <p>Start with energy. A live Zoom session to set your goal, meet your cohort and get your first prompt working.</p>
+      </div>
+      <div class="format-card reveal">
+        <div class="format-icon">👥</div>
+        <h3>Peer Circle</h3>
+        <p>Weekly small-group calls with your cohort. Share progress, get unstuck, give feedback, stay accountable.</p>
+      </div>
+      <div class="format-card reveal">
+        <div class="format-icon">🎧</div>
+        <h3>Async Learning</h3>
+        <p>Video modules, audio podcasts and readings — bite-sized and built for busy professionals. Do them your way.</p>
+      </div>
+      <div class="format-card reveal">
+        <div class="format-icon">🛠️</div>
+        <h3>Build &amp; Ship</h3>
+        <p>Weekly assignments that produce real output. By week 4, you have a portfolio of live, working builds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     CURRICULUM
+     ============================================= -->
+<section class="curriculum" id="curriculum">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag-blue">📚 Curriculum</span>
+      <h2>Four weeks.<br>One build per week.</h2>
+      <p>Each week has a theme, a set of skills and a concrete thing you ship at the end of it.</p>
+    </div>
+    <div class="curriculum-list">
+      <details class="week reveal" open>
+        <summary>
+          <div class="week-num">1</div>
+          <div class="week-title">
+            <strong>The Vibe Mindset &amp; Your First Build</strong>
+            <span>Kickoff · Tools orientation · Ship something small</span>
+          </div>
+          <span class="week-chevron">▾</span>
+        </summary>
+        <div class="week-body">
+          <div class="week-pills">
+            <span class="week-pill">What is vibe building?</span>
+            <span class="week-pill">Andrej Karpathy's framework</span>
+            <span class="week-pill">Tool orientation: Lovable + Bolt</span>
+            <span class="week-pill">Prompting fundamentals</span>
+            <span class="week-pill">Ship: your first working page</span>
+            <span class="week-pill">Live cohort kickoff session</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="week reveal">
+        <summary>
+          <div class="week-num">2</div>
+          <div class="week-title">
+            <strong>Automations &amp; Workflows</strong>
+            <span>n8n · AI agents · No-code integrations</span>
+          </div>
+          <span class="week-chevron">▾</span>
+        </summary>
+        <div class="week-body">
+          <div class="week-pills">
+            <span class="week-pill">Introduction to n8n</span>
+            <span class="week-pill">Building AI agents</span>
+            <span class="week-pill">Connect tools with APIs (no code)</span>
+            <span class="week-pill">Automate a real work task</span>
+            <span class="week-pill">Zapier vs Make vs n8n</span>
+            <span class="week-pill">Peer circle: automation showcase</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="week reveal">
+        <summary>
+          <div class="week-num">3</div>
+          <div class="week-title">
+            <strong>Ship a Full Product</strong>
+            <span>Full-stack app · Claude API · Deployment</span>
+          </div>
+          <span class="week-chevron">▾</span>
+        </summary>
+        <div class="week-body">
+          <div class="week-pills">
+            <span class="week-pill">Product thinking for builders</span>
+            <span class="week-pill">Claude API integration</span>
+            <span class="week-pill">Cursor for code editing</span>
+            <span class="week-pill">Deploy to Vercel / Netlify</span>
+            <span class="week-pill">Ship: working web product</span>
+            <span class="week-pill">User feedback loop</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="week reveal">
+        <summary>
+          <div class="week-num">4</div>
+          <div class="week-title">
+            <strong>Launch, Monetise &amp; Scale</strong>
+            <span>Distribution · Pricing · Demo day</span>
+          </div>
+          <span class="week-chevron">▾</span>
+        </summary>
+        <div class="week-body">
+          <div class="week-pills">
+            <span class="week-pill">Getting your first users</span>
+            <span class="week-pill">Pricing your product or service</span>
+            <span class="week-pill">Building in public</span>
+            <span class="week-pill">Scaling with AI</span>
+            <span class="week-pill">Demo day: present your build</span>
+            <span class="week-pill">Certificate of completion</span>
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     WHAT'S INCLUDED
+     ============================================= -->
+<section class="includes">
+  <div class="includes-inner">
+    <div>
+      <div class="sec-header reveal" style="text-align:left; margin-bottom:32px;">
+        <span class="tag tag-amber">📦 What's included</span>
+        <h2>Everything you need.<br>Nothing you don't.</h2>
+      </div>
+      <div class="includes-list">
+        <div class="include-item reveal">
+          <div class="include-icon">🚀</div>
+          <div class="include-text">
+            <h4>Live weekly sessions</h4>
+            <p>Kickoff + 3 weekly live Zoom calls. Show your progress, ask questions, get real-time feedback.</p>
+          </div>
+        </div>
+        <div class="include-item reveal">
+          <div class="include-icon">👥</div>
+          <div class="include-text">
+            <h4>Private peer circle</h4>
+            <p>A small, curated group of builders at your level. Weekly check-ins, shared wins, mutual accountability.</p>
+          </div>
+        </div>
+        <div class="include-item reveal">
+          <div class="include-icon">🎧</div>
+          <div class="include-text">
+            <h4>Async video + podcast library</h4>
+            <p>60+ modules across 4 weeks. Watch, listen or read — on your commute, on your schedule.</p>
+          </div>
+        </div>
+        <div class="include-item reveal">
+          <div class="include-icon">📝</div>
+          <div class="include-text">
+            <h4>Weekly build assignments</h4>
+            <p>Structured briefs that result in real, deployed products by week 4. Build something every single week.</p>
+          </div>
+        </div>
+        <div class="include-item reveal">
+          <div class="include-icon">💬</div>
+          <div class="include-text">
+            <h4>Community &amp; support channel</h4>
+            <p>Ask anything, get unstuck fast, and stay connected with your cohort long after graduation.</p>
+          </div>
+        </div>
+        <div class="include-item reveal">
+          <div class="include-icon">🎓</div>
+          <div class="include-text">
+            <h4>Verified certificate</h4>
+            <p>A shareable credential recognising your completion — for your LinkedIn, CV or portfolio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="includes-callout reveal">
+      <div class="callout-cert">🏆</div>
+      <h3>Designed for working professionals</h3>
+      <p>This programme was built for people with jobs, deadlines and busy lives. Everything fits in 5–7 hours per week — spread across live, async and building time.</p>
+      <div class="callout-note">
+        💼 <strong>L&amp;D budget tip:</strong> Send your manager our one-pager and get this funded through your learning &amp; development budget. Most employers say yes.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     WHO IT'S FOR
+     ============================================= -->
+<section class="who" id="who">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag-pink">🎯 Who it's for</span>
+      <h2>Built for ambitious people<br>ready to build.</h2>
+      <p>You don't need a technical background. You need a goal, a project idea, and the drive to ship.</p>
+    </div>
+    <div class="who-grid">
+      <div class="who-card reveal">
+        <div class="who-avatar">💼</div>
+        <h3>Corporate employees</h3>
+        <p>You have ideas for tools that would transform your team's work — but no developer to build them. Now you don't need one.</p>
+        <div class="who-tags">
+          <span class="who-tag">Product Managers</span>
+          <span class="who-tag">Marketers</span>
+          <span class="who-tag">Consultants</span>
+          <span class="who-tag">HR &amp; L&amp;D</span>
+        </div>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-avatar">🌱</div>
+        <h3>Non-profit &amp; impact workers</h3>
+        <p>Your mission matters. AI tools can multiply your impact 10x — without multiplying your team. Learn to build what you need.</p>
+        <div class="who-tags">
+          <span class="who-tag">NGO teams</span>
+          <span class="who-tag">Social innovators</span>
+          <span class="who-tag">Public sector</span>
+          <span class="who-tag">Educators</span>
+        </div>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-avatar">⚡</div>
+        <h3>Side-hustlers &amp; founders</h3>
+        <p>You've got a business idea that keeps waking you up at 3am. Time to stop dreaming and start shipping — this cohort is your runway.</p>
+        <div class="who-tags">
+          <span class="who-tag">First-time founders</span>
+          <span class="who-tag">Freelancers</span>
+          <span class="who-tag">Indie makers</span>
+          <span class="who-tag">Career switchers</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     WHAT PARTICIPANTS BUILD
+     ============================================= -->
+<section class="builds">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag-coral">🛠️ What you'll build</span>
+      <h2>Real products.<br>Real results.</h2>
+      <p>Past participants have shipped apps, automations, internal tools and side businesses — in 4 weeks.</p>
+    </div>
+    <div class="builds-grid">
+      <div class="build-card reveal">
+        <div class="build-icon">⚙️</div>
+        <h4>Internal tools</h4>
+        <p>Dashboards, workflow automations, and reporting tools your team actually uses — built in days.</p>
+      </div>
+      <div class="build-card reveal">
+        <div class="build-icon">🌐</div>
+        <h4>Web apps &amp; products</h4>
+        <p>A live, working product with real users — from landing page to full application logic.</p>
+      </div>
+      <div class="build-card reveal">
+        <div class="build-icon">🤖</div>
+        <h4>AI-powered services</h4>
+        <p>Chatbots, content generators, research assistants and AI agents for your specific context.</p>
+      </div>
+      <div class="build-card reveal">
+        <div class="build-icon">💸</div>
+        <h4>Revenue-generating ventures</h4>
+        <p>Products and services that generate real income — several participants earn €1k+ within weeks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     STORIES
+     ============================================= -->
+<section class="stories">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag-amber">✨ Proof it works</span>
+      <h2>Vibe builders are already<br>changing the game.</h2>
+      <p>These are real people who used the same tools you'll learn — and the results speak for themselves.</p>
+    </div>
+    <div class="stories-grid">
+      <div class="story-card reveal">
+        <div class="story-stat">$80M</div>
+        <h4>Raised by Lovable-built product</h4>
+        <p>Maor Shlomo used Lovable to build Base44 — acquired for $80M after launching without a single line of traditional code.</p>
+        <span class="story-name">Maor Shlomo</span>
+      </div>
+      <div class="story-card reveal">
+        <div class="story-stat">1 day</div>
+        <h4>From zero to full app</h4>
+        <p>Jack Dorsey publicly shipped a working app in a single day using vibe coding tools — a task that used to take months.</p>
+        <span class="story-name">Jack Dorsey</span>
+      </div>
+      <div class="story-card reveal">
+        <div class="story-stat">$1M+</div>
+        <h4>Monthly revenue, solo founder</h4>
+        <p>Pieter Levels runs 12 profitable products alone — using AI as his entire development team.</p>
+        <span class="story-name">Pieter Levels</span>
+      </div>
+      <div class="story-card reveal">
+        <div class="story-stat">3 days</div>
+        <h4>No-code to launched product</h4>
+        <p>"I went from no tech skills to a live product with paying customers in under 72 hours — I couldn't believe it."</p>
+        <span class="story-name">Kelsey, cohort alumni</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     TESTIMONIALS
+     ============================================= -->
+<section class="testimonials">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag-purple">💬 From the community</span>
+      <h2>What builders say.</h2>
+      <p>Real feedback from people who've already started their vibe building journey.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-bigquote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">I went in thinking I'd never build anything technical. By week 2 I had an internal tool saving my team 4 hours a week. This is genuinely career-changing.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SL</div>
+          <div>
+            <div class="testi-name">Sophie L.</div>
+            <div class="testi-role">Head of Operations, scale-up</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-bigquote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">The peer circle was unexpected gold. Having 6 other ambitious people reviewing my work every week made me 3x faster. I shipped more in 4 weeks than in 2 years of trying.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">MK</div>
+          <div>
+            <div class="testi-name">Marcus K.</div>
+            <div class="testi-role">Strategy consultant &amp; side-founder</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-bigquote">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">My HR team funded this through our L&amp;D budget — and my manager was thrilled. Now I'm building AI tools for our whole department. Best investment we've made this year.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AV</div>
+          <div>
+            <div class="testi-name">Amara V.</div>
+            <div class="testi-role">Programme Manager, non-profit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     PRICING
+     ============================================= -->
+<section class="pricing" id="signup">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag-green">💰 Simple pricing</span>
+      <h2>One price. Everything included.</h2>
+      <p>No upsells, no hidden extras. Everything you need to ship your first AI product.</p>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="pricing-blob1"></div>
+      <div class="pricing-blob2"></div>
+      <div class="pricing-price-wrap">
+        <div class="pricing-cohort">📅 Cohort 1 — Starts soon</div>
+        <div class="pricing-price"><span class="cur">€</span>XXX</div>
+        <div class="pricing-desc">one-time payment · lifetime community access</div>
+        <div class="pricing-features">
+          <div class="pricing-feature"><div class="pricing-check">✓</div> 4-week live cohort programme</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div> Weekly live sessions &amp; peer circle</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div> Full async video &amp; podcast library</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div> Weekly build assignments</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div> Community access (lifetime)</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div> Verified certificate of completion</div>
+          <div class="pricing-feature"><div class="pricing-check">✓</div> L&amp;D budget eligible</div>
+        </div>
+        <a href="#signup-form" class="btn btn-green btn-full btn-lg pricing-cta">Reserve my spot →</a>
+        <div class="pricing-note">🔒 30 spots max · Pay after acceptance · Cancel before start for full refund</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     SIGNUP FORM
+     ============================================= -->
+<section class="signup" id="signup-form">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag-purple">✉️ Apply now</span>
+      <h2>Claim your seat.</h2>
+      <p>Fill in the form below. We review every application and get back to you within 48 hours.</p>
+    </div>
+    <div class="signup-card reveal">
+      <div id="form-content">
+        <form id="signup-form-el" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="first">First name *</label>
+              <input type="text" id="first" name="first_name" required placeholder="Marco">
+            </div>
+            <div class="form-group">
+              <label for="last">Last name *</label>
+              <input type="text" id="last" name="last_name" required placeholder="Van Hout">
+            </div>
+            <div class="form-group full">
+              <label for="email">Work email *</label>
+              <input type="email" id="email" name="email" required placeholder="marco@company.com">
+            </div>
+            <div class="form-group">
+              <label for="role">Your role *</label>
+              <input type="text" id="role" name="role" required placeholder="e.g. Product Manager">
+            </div>
+            <div class="form-group">
+              <label for="org">Organisation *</label>
+              <input type="text" id="org" name="organisation" required placeholder="e.g. Philips">
+            </div>
+            <div class="form-group full">
+              <label for="budget">Learning &amp; Development budget?</label>
+              <select id="budget" name="ld_budget">
+                <option value="">Select one…</option>
+                <option value="yes">Yes — my employer covers it</option>
+                <option value="will_ask">I'll request it from HR</option>
+                <option value="self">Paying myself</option>
+                <option value="unsure">Not sure yet</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label for="idea">What do you want to build?</label>
+              <textarea id="idea" name="build_idea" placeholder="Describe the tool, product or business idea you'd like to work on during the cohort…"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-purple form-submit">Send my application →</button>
+        </form>
+        <div class="form-success" id="form-success">
+          <div class="form-success-icon">🎉</div>
+          <h3>Application received!</h3>
+          <p>We'll review your application and get back to you within 48 hours. Keep an eye on your inbox.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FAQ
+     ============================================= -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="sec-header reveal">
+      <span class="tag tag-blue">❓ FAQ</span>
+      <h2>Questions answered.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>Do I need any coding experience? <span class="faq-chevron">▾</span></summary>
+        <div class="faq-answer">None at all. Vibe building is specifically designed for people who can't code — or don't want to. You'll use natural language and AI tools to build everything. If you can write an email, you can build a product.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>How much time does it take per week? <span class="faq-chevron">▾</span></summary>
+        <div class="faq-answer">Plan for 5–7 hours per week: roughly 1.5 hours of live sessions, 2–3 hours of async video/podcasts, and 2–3 hours of building. Everything is designed to fit around a full-time job.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Can my employer pay for this? <span class="faq-chevron">▾</span></summary>
+        <div class="faq-answer">Very likely yes. We provide an L&D one-pager you can send to your HR or manager. 85% of organisations actively fund upskilling, and AI literacy is a top priority for 2025/26. Most applications are approved quickly.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What tools will I learn to use? <span class="faq-chevron">▾</span></summary>
+        <div class="faq-answer">Lovable, Bolt.new, Replit, Claude, n8n, v0 and Cursor — the current frontier of vibe building. These are the tools that are replacing traditional development for non-technical builders right now.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What if I can't attend a live session? <span class="faq-chevron">▾</span></summary>
+        <div class="faq-answer">All live sessions are recorded and available within 24 hours. We also have an async Q&A channel so you can get your questions answered even if you miss a call.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Is there a refund policy? <span class="faq-chevron">▾</span></summary>
+        <div class="faq-answer">Yes. Cancel any time before the cohort start date for a full refund, no questions asked. After the cohort begins, we offer a pro-rated refund within the first week if it's not the right fit.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>How big is each cohort? <span class="faq-chevron">▾</span></summary>
+        <div class="faq-answer">Maximum 30 participants per cohort, with peer circles of 5–6 people. This is intentionally small so you get real attention, real feedback, and real relationships — not a crowd watching videos.</div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>What happens after the 4 weeks? <span class="faq-chevron">▾</span></summary>
+        <div class="faq-answer">You keep lifetime access to the community, all the learning materials, and your cohort network. Many participants continue building together, and alumni get priority access to future cohorts and advanced programmes.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FOOTER
+     ============================================= -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-dot">⚡</div>
+      VibeBuildingAcademy
+    </div>
+    <div class="footer-links">
+      <a href="#curriculum">Curriculum</a>
+      <a href="#who">Who it's for</a>
+      <a href="#signup">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="mailto:hello@vibebuilding.academy">Contact</a>
+    </div>
+    <div class="footer-copy">© 2026 VibeBuildingAcademy</div>
+  </div>
+</footer>
+
+<!-- =============================================
+     JS — Scroll reveal + form handling
+     ============================================= -->
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Stagger grid children
+document.querySelectorAll('.outcomes-grid, .format-grid, .who-grid, .stories-grid, .testi-grid, .builds-grid, .includes-list').forEach(grid => {
+  grid.querySelectorAll(':scope > *').forEach((el, i) => {
+    el.style.transitionDelay = (i * 80) + 'ms';
+  });
+});
+
+// Form submission
+const form = document.getElementById('signup-form-el');
+const success = document.getElementById('form-success');
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type=submit]');
+    btn.textContent = 'Sending…'; btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        success.style.display = 'block';
+      } else {
+        btn.textContent = 'Something went wrong — try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Something went wrong — try again';
+      btn.disabled = false;
+    }
+  });
+}
+</script>
+</body>
+</html>
