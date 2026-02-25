@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vibe Building Academy — Something big is coming.</title>
+<title>Vibe Building Academy — Build Your Future Career. With AI.</title>
 <meta name="description" content="The first live programme for professionals who want to build tools, products and businesses with AI — no code required. Coming soon.">
-<meta property="og:title" content="Vibe Building Academy — Build with AI. No code required.">
+<meta property="og:title" content="Vibe Building Academy — Build Your Future Career. With AI.">
 <meta property="og:description" content="The first live programme for people who want to build real things with AI. Coming very soon.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%237C3AED'/><path d='M19 3L6 18H14L12 29L26 14H18L19 3Z' fill='white'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -267,7 +268,7 @@ footer{padding:40px 24px;background:var(--bg)}
   <div class="blob blob-5"></div>
   <div class="hero-inner">
     <div class="hero-live"><span class="live-dot"></span>Coming very soon — cohort 1 forming now</div>
-    <h1>Build <span class="hl-purple">anything</span><br>with <span class="hl-green">AI.</span><br><span class="hl-pink">No code required.</span></h1>
+    <h1>Build Your <span class="hl-purple">Future Career.</span><br>With <span class="hl-green">AI.</span></h1>
     <p class="hero-sub">The first live programme for professionals who want to turn ideas into real products, tools and businesses — using AI as their builder.</p>
     <div class="countdown-wrap">
       <div class="countdown-label">Launching in</div>
@@ -284,7 +285,7 @@ footer{padding:40px 24px;background:var(--bg)}
     <div class="notify-card" id="notify">
       <h2>🔔 Be the first to know</h2>
       <p>Get early access, founding member pricing and a head start before we open to the public.</p>
-      <form id="notify-form" onsubmit="kitSubmit(event,'notify-form','notify-success-msg')">
+      <form id="notify-form" action="https://app.kit.com/forms/75a1ed23c9/subscriptions" method="post" target="kit-iframe" onsubmit="kitMark('notify-form','notify-success-msg')">
         <div class="notify-fields">
           <input type="text" name="fields[first_name]" placeholder="Your first name" class="notify-input" autocomplete="given-name">
           <input type="email" name="email_address" placeholder="Your email address" class="notify-input" required autocomplete="email">
@@ -411,7 +412,7 @@ footer{padding:40px 24px;background:var(--bg)}
     <div class="fcta-blob2"></div>
     <h2>Ready to start building?</h2>
     <p>Drop your email and we'll let you know the moment doors open — along with your founding member access.</p>
-    <form id="fcta-form" class="fcta-form" onsubmit="kitSubmit(event,'fcta-form','fcta-success')">
+    <form id="fcta-form" class="fcta-form" action="https://app.kit.com/forms/75a1ed23c9/subscriptions" method="post" target="kit-iframe" onsubmit="kitMark('fcta-form','fcta-success')">
       <input type="email" name="email_address" placeholder="your@email.com" class="fcta-input" required autocomplete="email">
       <button type="submit" class="fcta-btn">Notify me →</button>
     </form>
@@ -450,28 +451,24 @@ updateCountdown();setInterval(updateCountdown,1000);
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 document.querySelectorAll('.explainer-steps,.stats-grid,.teaser-grid,.who-grid,.perks-grid').forEach(g=>{g.querySelectorAll(':scope > *').forEach((el,i)=>{el.style.transitionDelay=(i*90)+'ms'})});
-function kitSubmit(e,formId,successId){
-  e.preventDefault();
-  var form=document.getElementById(formId);
-  var emailEl=form.querySelector('[name="email_address"]');
-  var nameEl=form.querySelector('[name="fields[first_name]"]');
-  var email=emailEl?emailEl.value.trim():'';
-  if(!email)return;
-  var params='email_address='+encodeURIComponent(email);
-  if(nameEl&&nameEl.value.trim())params+='&fields%5Bfirst_name%5D='+encodeURIComponent(nameEl.value.trim());
-  var btn=form.querySelector('button[type="submit"]');
-  if(btn){btn.disabled=true;btn.textContent='Sending…';}
-  fetch('https://app.kit.com/forms/75a1ed23c9/subscriptions',{
-    method:'POST',
-    mode:'no-cors',
-    headers:{'Content-Type':'application/x-www-form-urlencoded'},
-    body:params
-  }).catch(function(){}).finally(function(){
-    form.style.display='none';
-    var s=document.getElementById(successId);
-    if(s)s.style.display='block';
+var _kitPending=null;
+function kitMark(formId,successId){_kitPending={f:formId,s:successId};}
+document.addEventListener('DOMContentLoaded',function(){
+  var iframe=document.getElementById('kit-iframe');
+  if(!iframe)return;
+  var loaded=false;
+  iframe.addEventListener('load',function(){
+    if(!loaded){loaded=true;return;} // skip the initial empty load
+    if(_kitPending){
+      var f=document.getElementById(_kitPending.f);
+      var s=document.getElementById(_kitPending.s);
+      if(f)f.style.display='none';
+      if(s)s.style.display='block';
+      _kitPending=null;
+    }
   });
-}
+});
 </script>
+<iframe id="kit-iframe" name="kit-iframe" style="display:none;width:0;height:0;border:0" aria-hidden="true"></iframe>
 </body>
 </html>
