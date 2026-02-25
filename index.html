@@ -217,6 +217,30 @@ footer{padding:40px 24px;background:var(--bg)}
 .founder-bio{font-size:16px;font-weight:600;color:var(--text-mid);line-height:1.8;margin-bottom:10px}
 .founder-badges{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .founder-badge{padding:8px 18px;border-radius:100px;font-size:13px;font-weight:800;background:white;color:var(--purple);box-shadow:0 4px 0 var(--purple-mid)}
+/* ── Build on section ── */
+.buildon{padding:72px 24px;background:var(--bg)}
+.buildon-inner{max-width:900px;margin:0 auto}
+.buildon-header{text-align:center;margin-bottom:44px}
+.buildon-header h2{font-size:clamp(26px,4vw,42px);font-weight:900;line-height:1.1;margin:14px 0}
+.buildon-header p{font-size:17px;font-weight:600;color:var(--text-mid);max-width:580px;margin:0 auto;line-height:1.7}
+.buildon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px}
+.buildon-card{border-radius:var(--r);padding:22px 18px;background:white;transition:transform .2s}
+.buildon-card:hover{transform:translateY(-5px) rotate(.4deg)}
+.buildon-card:nth-child(1){box-shadow:0 7px 0 var(--purple-mid)}
+.buildon-card:nth-child(2){box-shadow:0 7px 0 var(--green-mid)}
+.buildon-card:nth-child(3){box-shadow:0 7px 0 var(--amber-mid)}
+.buildon-card:nth-child(4){box-shadow:0 7px 0 var(--pink-mid)}
+.buildon-card:nth-child(5){box-shadow:0 7px 0 var(--blue-mid)}
+.buildon-card:nth-child(6){box-shadow:0 7px 0 var(--coral-mid)}
+.buildon-card:nth-child(7){box-shadow:0 7px 0 var(--green-mid)}
+.buildon-card:nth-child(8){box-shadow:0 7px 0 var(--purple-mid)}
+.buildon-icon{font-size:30px;margin-bottom:10px;display:block}
+.buildon-card h3{font-size:14px;font-weight:900;color:var(--text);margin-bottom:5px}
+.buildon-card p{font-size:12px;font-weight:600;color:var(--text-mid);line-height:1.55}
+.buildon-callout{background:linear-gradient(160deg,#1E1B2E 0%,#3B1090 100%);border-radius:var(--r-xl);box-shadow:0 10px 0 rgba(0,0,0,.25);padding:36px 44px;text-align:center}
+.buildon-callout p{font-size:18px;font-weight:700;color:rgba(255,255,255,.92);line-height:1.7;max-width:640px;margin:0 auto}
+.buildon-callout strong{color:#C4B5FD}
+@media(max-width:720px){.buildon-grid{grid-template-columns:repeat(2,1fr)}}
 /* ── Builder mentality section ── */
 .mentality{padding:90px 24px;background:var(--bg)}
 .mentality-inner{max-width:900px;margin:0 auto}
@@ -436,6 +460,29 @@ footer{padding:40px 24px;background:var(--bg)}
   </div>
 </section>
 
+<section class="buildon">
+  <div class="buildon-inner">
+    <div class="buildon-header reveal">
+      <span class="tag tag-green">🧩 Your experience is the edge</span>
+      <h2>You'll build <em>on</em> what<br>you already know.</h2>
+      <p>Your domain expertise isn't obsolete — it's the ingredient that makes AI-built tools actually powerful. You know <em>what</em> to build because you understand the problem. AI gives you the power to build it.</p>
+    </div>
+    <div class="buildon-grid">
+      <div class="buildon-card reveal"><span class="buildon-icon">📣</span><h3>Marketing</h3><p>Build campaign tools, content systems and audience automations that run while you sleep.</p></div>
+      <div class="buildon-card reveal"><span class="buildon-icon">👥</span><h3>HR &amp; L&amp;D</h3><p>Build onboarding flows, training tools and skills trackers tailored to your organisation.</p></div>
+      <div class="buildon-card reveal"><span class="buildon-icon">💡</span><h3>Consulting</h3><p>Build research assistants, client dashboards and proposal generators that 10× your output.</p></div>
+      <div class="buildon-card reveal"><span class="buildon-icon">📊</span><h3>Finance &amp; Ops</h3><p>Build reporting pipelines, budget models and analysis tools that work faster than any spreadsheet.</p></div>
+      <div class="buildon-card reveal"><span class="buildon-icon">🗂</span><h3>Product &amp; Strategy</h3><p>Build internal tools, process automations and working prototypes without waiting on a developer.</p></div>
+      <div class="buildon-card reveal"><span class="buildon-icon">🏥</span><h3>Healthcare &amp; Wellbeing</h3><p>Build patient tools, intake flows and care communication systems that improve outcomes.</p></div>
+      <div class="buildon-card reveal"><span class="buildon-icon">🎓</span><h3>Education &amp; Training</h3><p>Build interactive learning experiences, assessment tools and personalised study systems.</p></div>
+      <div class="buildon-card reveal"><span class="buildon-icon">✨</span><h3>Any field</h3><p>Whatever you know deeply — your sector knowledge becomes the prompt, and AI builds the rest.</p></div>
+    </div>
+    <div class="buildon-callout reveal">
+      <p>The builder advantage isn't just knowing AI. It's knowing AI <strong>plus your field</strong>. That combination is rare, extraordinarily valuable — and exactly what this programme creates.</p>
+    </div>
+  </div>
+</section>
+
 <section class="founder">
   <div class="founder-inner">
     <div class="founder-card reveal">
@@ -519,7 +566,7 @@ function updateCountdown(){
 updateCountdown();setInterval(updateCountdown,1000);
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-document.querySelectorAll('.explainer-steps,.stats-grid,.teaser-grid,.who-grid,.perks-grid,.mentality-grid,.founder-badges').forEach(g=>{g.querySelectorAll(':scope > *').forEach((el,i)=>{el.style.transitionDelay=(i*90)+'ms'})});
+document.querySelectorAll('.explainer-steps,.stats-grid,.teaser-grid,.who-grid,.perks-grid,.mentality-grid,.buildon-grid,.founder-badges').forEach(g=>{g.querySelectorAll(':scope > *').forEach((el,i)=>{el.style.transitionDelay=(i*70)+'ms'})});
 function kitMark(formId,successId){
   setTimeout(function(){
     var f=document.getElementById(formId);
